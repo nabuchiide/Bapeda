@@ -17,7 +17,7 @@ class AnggaranModel{
 
     public function getDataByIdKegiatan($id_kegiatan){
         $allData = [];
-        $this->db->query(" SELECT * FROM anggaran WHERE id_kegiatan =:id_kegiatan AND status = 0 ");
+        $this->db->query(" SELECT * FROM anggaran WHERE id_kegiatan =:id_kegiatan ");
         $this->db->bind('id_kegiatan', $id_kegiatan);
         $allData = $this->db->resultset();
         for ($i=0; $i < count($allData); $i++) { 
@@ -58,6 +58,22 @@ class AnggaranModel{
         $this->db->bind('id_kegiatan', $data['id_kegiatan']);
         $this->db->bind('id', $data['id']);
         $this->db->bind('keterangan', $data['keterangan']);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function ubahStatus($id_kegiatan,$status){
+         
+        $query = " UPDATE anggaran
+                   SET
+                       status      =:status 
+                   WHERE 
+                       id_kegiatan =:id_kegiatan
+           ";
+        $this->db->query($query);
+        $this->db->bind('status', $status);
+        $this->db->bind('id_kegiatan', $id_kegiatan);
 
         $this->db->execute();
         return $this->db->rowCount();

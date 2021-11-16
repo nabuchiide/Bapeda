@@ -36,16 +36,13 @@ Class KegiatanModel {
     }
 
     public function ubahData($data){
-        echo "<pre>";
-        print_r($data);
-        echo "</pre>";
 
         $query = " UPDATE kegiatan
                     SET
-                    nama_kegiatan   =:nama_kegiatan, 
-                    lokasi          =:lokasi, 
-                    tanggal         =:tanggal, 
-                    keterangan      =:keterangan
+                        nama_kegiatan   =:nama_kegiatan, 
+                        lokasi          =:lokasi, 
+                        tanggal         =:tanggal, 
+                        keterangan      =:keterangan
                     WHERE
                         id =:id
                 ";
@@ -60,6 +57,21 @@ Class KegiatanModel {
         return $this->db->rowCount();
     }
 
+    public function ubahStatus($id, $status){
+         $query = " UPDATE kegiatan
+                    SET
+                        status   =:status
+                    WHERE
+                        id =:id
+                ";
+        $this->db->query($query);
+        $this->db->bind('status', $status);
+        $this->db->bind('id', $id);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
     public function getOneData($id){
         $this->db->query(" SELECT * from kegiatan WHERE id =:id ");
         $this->db->bind('id', $id);
@@ -68,7 +80,6 @@ Class KegiatanModel {
 
     public function hapusData($id){
         $query = " DELETE FROM kegiatan WHERE id=:id;
-                    DELETE FROM anggran WHERE id_kegiatan=:id;
                  ";
         $this->db->query($query);
         $this->db->bind('id', $id);

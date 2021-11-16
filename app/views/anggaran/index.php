@@ -61,7 +61,7 @@
                         <tbody id="resultAnggaran">
                             
                         </tbody>
-                        <tbody>
+                        <tbody id="form-anggaran">
                             <tr>
                                 <td bgcolor="SteelBlue"></td>
                                 <td><span id="tanggal_table_anggaran"></span></td>
@@ -80,6 +80,9 @@
                     </table>
                     <hr>
                     <div class="post_msg" id="post_msg"></div>
+                    <div class="row justify-content-end generate-status">
+                        <button class="btn btn-success" onclick="generate();">Generate Pajak</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -116,6 +119,7 @@
                             <a href= "#" class="getNamaKegiatan" data-kegiatan="<?= $data['nama_kegiatan']; ?>" 
                                                                  data-id="<?=$data['id'];?>" 
                                                                  data-tanggal="<?= $data['tanggal'];?>" 
+                                                                 data-status="<?= $data['status'];?>" 
                                                                  data-dismiss="modal">
                                 <span>
                                     <?= $data['nama_kegiatan'];?>
@@ -142,6 +146,7 @@
             const kegiatan = $(this).data('kegiatan');
             const id = $(this).data('id');
             const tanggal = $(this).data('tanggal');
+            const status = $(this).data('status');
             reloadTabelAnggaran(id,tanggal);
 
             $("#nama_kegiatan").val(kegiatan);
@@ -149,6 +154,9 @@
             $("#id_kegiatan").val(id);
             $("#tanggal_kegiatan").val(tanggal);
             $("#tanggal_table_anggaran").html(tanggal);
+            if(status != 0){
+                $("#form-anggaran").empty();
+            }
             $("#cardAnggaran").show();
         })
 
@@ -236,12 +244,12 @@
             form.setAttribute("method", "post");
             form.setAttribute("action", "<?= BASEURL;?>/anggaran/tambah");
             var stat = document.createElement("input");
-                stat.setAttribute("type", "text");
+                stat.setAttribute("type", "hidden");
                 stat.setAttribute("name", "status");
                 stat.setAttribute("value", "0");
                 form.append(stat); 
             var id_kegiatan = document.createElement("input");
-                id_kegiatan.setAttribute("type", "text");
+                id_kegiatan.setAttribute("type", "hidden");
                 id_kegiatan.setAttribute("name", "id_kegiatan");
                 id_kegiatan.setAttribute("value",  $("#id_kegiatan").val());
                 form.append(id_kegiatan); 
@@ -249,7 +257,7 @@
             for(const[key,value] of Object.entries(arr)){
                 //console.log(key+":"+value);
                 var inp = document.createElement("input");
-                inp.setAttribute("type", "text");
+                inp.setAttribute("type", "hidden");
                 inp.setAttribute("name", key);
                 inp.setAttribute("value", value);
                 form.append(inp); 
@@ -306,10 +314,15 @@
                             data_load += '    </td>'
                             data_load += '    <td><div class="row_data" tabel-col-name="biaya">'+element.biaya+'</div></td>'
                             data_load += '    <td>'
-                            data_load += '        <span class="btn-edit"><a href="#" class="btn btn-warning">Edit</a></span>'
-                            data_load += '        <a href="#" class="btn btn-danger btn-delete" onclick="deleteData('+element.id+')">delete</a>'
-                            data_load += '        <span class="btn-save"><a href="#" class="btn btn-primary">Save</a></span>'
-                            data_load += '        <span class="btn-cancel"><a href="#" class="btn btn-link">Cancel</a></span>'
+                            if(element.status == 0 ){
+                                data_load += '        <span class="btn-edit"><a href="#" class="btn btn-warning">Edit</a></span>'
+                                data_load += '        <a href="#" class="btn btn-danger btn-delete" onclick="deleteData('+element.id+')">delete</a>'
+                                data_load += '        <span class="btn-save"><a href="#" class="btn btn-primary">Save</a></span>'
+                                data_load += '        <span class="btn-cancel"><a href="#" class="btn btn-link">Cancel</a></span>'
+                            }else{
+                                data_load += 'Pembayaran Pajak'
+                            }
+
                             data_load += '    </td>'
                             data_load += '</tr>'
                             no++
@@ -368,4 +381,31 @@
         }
     }
     
+    function generate(){
+        //alert("GENERATE ")
+        const id = $("#id_kegiatan").val();
+        $.ajax({
+            url      : '<?= BASEURL;?>/anggaran/generateStatus',
+            data     : {id:id},
+            method   : 'post',
+            dataType : 'json',
+            success  : function(data){
+                //console.log("SUCCESS :: ");
+                console.log(data);
+                if(data == 'success'){
+                    $("#message").html(message('berhasil','dihapus','success','Anggaran'));
+                }else{
+                    $("#message").html(message('gagal','diubah atau ditambahkan','danger','Anggaran'));
+                }
+                reloadTabelAnggaran($("#id_kegiatan").val(),$("#tanggal_kegiatan").val())
+                $("#form-anggaran").empty();
+                $(".generate-status").empty();
+
+            }, 
+            error : function (data) {
+                //console.log("FAIL :: ");
+                console.log(data);
+            }
+        });
+    }
 </script>

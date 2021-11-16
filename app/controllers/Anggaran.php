@@ -1,48 +1,65 @@
 <?php
 
-class Anggaran extends Controller{
-    public function idex(){
+class Anggaran extends Controller
+{
+    public function idex()
+    {
         $data['judul'] = 'anggaran';
-        $data['kegiatan'] = $this->model("KegiatanModel")->getKegiatanStatusAnggaran();
+        $data['kegiatan'] = $this->model("KegiatanModel")->getAllData();
         $this->view('templates/header', $data);
         $this->view('templates/sidemenu');
         $this->view('anggaran/index', $data);
         $this->view('templates/footer');
     }
 
-    public function getByKegitanAnggaran(){
+    public function getByKegitanAnggaran()
+    {
         $allData = [];
         $allData = $this->model("AnggaranModel")->getDataByIdKegiatan($_POST['id']);
         echo json_encode($allData);
     }
 
-    public function tambah(){
+    public function tambah()
+    {
         $chkData = $this->model('AnggaranModel')->cekingData($_POST['id']);
-        $_POST['biaya'] = preg_replace('/[^a-zA-Z0-9_ -]/s','',$_POST['biaya']);
-        if($chkData['CountData'] > 0){
-            if($this->model('AnggaranModel')->ubahData($_POST)>0){
+        $_POST['biaya'] = preg_replace('/[^a-zA-Z0-9_ -]/s', '', $_POST['biaya']);
+        if ($chkData['CountData'] > 0) {
+            if ($this->model('AnggaranModel')->ubahData($_POST) > 0) {
                 echo json_encode("success update");
                 exit;
-            }else{
+            } else {
                 echo json_encode("failed");
                 exit;
             }
-        }else{
-            if($this->model('AnggaranModel')->tambahData($_POST)>0){
+        } else {
+            if ($this->model('AnggaranModel')->tambahData($_POST) > 0) {
                 echo json_encode("success insert");
                 exit;
-            }else{
+            } else {
                 echo json_encode("failed");
                 exit;
             }
         }
     }
 
-    public function hapus(){
-        if($this->model('AnggaranModel')->hapusData($_POST['id'])>0){
+    public function hapus()
+    {
+        if ($this->model('AnggaranModel')->hapusData($_POST['id']) > 0) {
             echo json_encode("success");
             exit;
-        }else{
+        } else {
+            echo json_encode("failed");
+            exit;
+        }
+    }
+
+    public function generateStatus()
+    {
+        if ($this->model('AnggaranModel')->ubahStatus($_POST['id'], "1") > 0 ) {
+            $this->model('KegiatanModel')->ubahStatus($_POST['id'], "1");
+            echo json_encode("success");
+            exit;
+        } else {
             echo json_encode("failed");
             exit;
         }
