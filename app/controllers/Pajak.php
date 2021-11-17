@@ -9,4 +9,10 @@ class Pajak extends Controller {
         $this->view('pajak/index', $data);
         $this->view('templates/footer');
     }
+
+    public function getByKegiatanPajak(){
+        $allData = [];
+        $allData = $this->model("PajakModel")->getDataByKegiatan($_POST['id']);
+        echo json_encode($allData);
+    }
 }

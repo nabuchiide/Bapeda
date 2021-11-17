@@ -1,32 +1,36 @@
 <?php
 
-class AnggaranModel{
+class AnggaranModel
+{
     private $db;
-    
+
     public function __construct()
     {
-        $this->db=new Database;
+        $this->db = new Database;
     }
 
-    public function getAllData(){
+    public function getAllData()
+    {
         $allData = [];
         $this->db->query(" SELECT * FROM anggaran ");
         $allData = $this->db->resultset();
         return $allData;
     }
 
-    public function getDataByIdKegiatan($id_kegiatan){
+    public function getDataByIdKegiatan($id_kegiatan)
+    {
         $allData = [];
         $this->db->query(" SELECT * FROM anggaran WHERE id_kegiatan =:id_kegiatan ");
         $this->db->bind('id_kegiatan', $id_kegiatan);
         $allData = $this->db->resultset();
-        for ($i=0; $i < count($allData); $i++) { 
+        for ($i = 0; $i < count($allData); $i++) {
             $allData[$i]['biaya'] = number_format($allData[$i]['biaya']);
         }
         return $allData;
     }
 
-    public function tambahData($data){
+    public function tambahData($data)
+    {
         $query = " INSERT INTO anggaran
                     VALUES
                     ('', :biaya, :status, :id_kegiatan, :keterangan)
@@ -36,13 +40,13 @@ class AnggaranModel{
         $this->db->bind('status', $data['status']);
         $this->db->bind('id_kegiatan', $data['id_kegiatan']);
         $this->db->bind('keterangan', $data['keterangan']);
-  
+
         $this->db->execute();
         return $this->db->rowCount();
-
     }
 
-    public function ubahData($data){
+    public function ubahData($data)
+    {
         $query = " UPDATE anggaran
                     SET
                         biaya       =:biaya, 
@@ -63,8 +67,9 @@ class AnggaranModel{
         return $this->db->rowCount();
     }
 
-    public function ubahStatus($id_kegiatan,$status){
-         
+    public function ubahStatus($id_kegiatan, $status)
+    {
+
         $query = " UPDATE anggaran
                    SET
                        status      =:status 
@@ -79,23 +84,26 @@ class AnggaranModel{
         return $this->db->rowCount();
     }
 
-    public function getOneData($id){
+    public function getOneData($id)
+    {
         $this->db->query(" SELECT * FROM anggaran WHERE id =:id");
         $this->db->bind('id', $id);
         return $this->db->resultset();
     }
 
-    public function cekingData($id){
+    public function cekingData($id)
+    {
         $allData = [];
         $query = " SELECT count(*) AS CountData FROM anggaran WHERE id =:id ";
 
         $this->db->query($query);
-        $this->db->bind('id',$id);
+        $this->db->bind('id', $id);
         $allData = $this->db->single();
         return $allData;
     }
 
-    public function hapusData($id){
+    public function hapusData($id)
+    {
         $query = " DELETE FROM anggaran WHERE id =:id ";
         $this->db->query($query);
         $this->db->bind('id', $id);
@@ -103,7 +111,8 @@ class AnggaranModel{
         return $this->db->rowCount();
     }
 
-    public function hapusDataByKegiatan($id_kegiatan){
+    public function hapusDataByKegiatan($id_kegiatan)
+    {
         $query = " DELETE FROM anggaran WHERE id_kegiatan =:id_kegiatan ";
         $this->db->query($query);
         $this->db->bind('id_kegiatan', $id_kegiatan);

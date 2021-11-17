@@ -50,11 +50,11 @@
                     <table class="table table-bordered data-table-format" width = "100%">
                         <thead>
                             <tr>
-                                <td>No</td>
-                                <td>Tanggal</td>
-                                <td>Keterngan</td>
-                                <td>Anggaran</td>
-                                <td>Action</td>
+                                <th>No</th>
+                                <th>Tanggal</th>
+                                <th>Keterngan</th>
+                                <th>Anggaran</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <!-- <tbody> -->
@@ -103,9 +103,9 @@
             <table class="table table-bordered data-table-format" width = "100%">
                 <thead>
                     <tr>
-                        <td>NO</td>
-                        <td>Tanggal</td>
-                        <td>Nama Kegiatan</td>
+                        <th>NO</th>
+                        <th>Tanggal</th>
+                        <th>Nama Kegiatan</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -143,10 +143,11 @@
         $(document).find('.btn-cancel').hide();
 
         $('.getNamaKegiatan').on('click', function(){
-            const kegiatan = $(this).data('kegiatan');
-            const id = $(this).data('id');
-            const tanggal = $(this).data('tanggal');
-            const status = $(this).data('status');
+            const kegiatan  = $(this).data('kegiatan');
+            const id        = $(this).data('id');
+            const tanggal   = $(this).data('tanggal');
+            const status    = $(this).data('status');
+            
             reloadTabelAnggaran(id,tanggal);
 
             $("#nama_kegiatan").val(kegiatan);
@@ -154,9 +155,12 @@
             $("#id_kegiatan").val(id);
             $("#tanggal_kegiatan").val(tanggal);
             $("#tanggal_table_anggaran").html(tanggal);
+            
             if(status != 0){
                 $("#form-anggaran").empty();
+                $(".generate-status").empty();
             }
+
             $("#cardAnggaran").show();
         })
 
@@ -388,19 +392,19 @@
             url      : '<?= BASEURL;?>/anggaran/generateStatus',
             data     : {id:id},
             method   : 'post',
-            dataType : 'json',
+            // dataType : 'json',
             success  : function(data){
                 //console.log("SUCCESS :: ");
                 console.log(data);
                 if(data == 'success'){
-                    $("#message").html(message('berhasil','dihapus','success','Anggaran'));
+                    $("#message").html(message('berhasil','digenerate','success','Anggaran'));
                 }else{
-                    $("#message").html(message('gagal','diubah atau ditambahkan','danger','Anggaran'));
+                    $("#message").html(message('gagal','digenerate','danger','Anggaran'));
                 }
                 reloadTabelAnggaran($("#id_kegiatan").val(),$("#tanggal_kegiatan").val())
                 $("#form-anggaran").empty();
                 $(".generate-status").empty();
-
+                
             }, 
             error : function (data) {
                 //console.log("FAIL :: ");
