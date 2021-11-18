@@ -20,8 +20,7 @@
     </div>
     
     <div class="row container-fluid">
-        <div class="col-lg-5">
-            
+        <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title"></h4>

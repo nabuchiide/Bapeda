@@ -20,20 +20,20 @@
     </div>
     
     <div class="row container-fluid">
-        <div class="col-lg-5">
+        <div class="col-lg-8">
             
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title"></h4>
                     <div class="form-group row">
                         <label for="example-text-input" class="col-sm-3 col-form-label">Nama Kegiatan</label>
-                        <div class="col-sm-7">
+                        <div class="col-sm-6">
                             <input class="form-control" type="text" value="" id="nama_kegiatan" placeholder="nama kegiatan" readonly>
                             <input class="form-control" type="hidden" value="" id="nama_kegiatan_hide" name="nama_kegiatan">
                             <input class="form-control" type="hidden" value="" id="id_kegiatan">
                             <input class="form-control" type="hidden" value="" id="tanggal_kegiatan">
                         </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <button class="btn btn-primary waves-effect waves-light" type="button" data-toggle="modal" data-target="#dataModal"> search </button>
                         </div>
                     </div>
@@ -147,6 +147,13 @@
 
             $("#cardPajak").show();
         })
+
+        $(document).on('click','.btn-lunasi', function(){
+            const id        = $(this).data('id');
+            update_status(id);
+            reloadTablePajak($("#id_kegiatan").val(),$("#tanggal_kegiatan").val())
+        });
+
     });
 
     function reloadTablePajak(id,tanggal) {
@@ -163,13 +170,17 @@
                     if(data.length != 0){
                         for (let i = 0; i < data.length; i++) {
                             const element = data[i];
-                            var stat  = ""
+                            var stat        = ""
+                            var action_text = ""
                             if(element.status == "0"){
                                 stat = "Belum dibayar"
+                                action_text = '<button class="btn btn-success btn-lunasi" data-id="'+element.id_pajak+'">Lunasi</button>'
                             }else if(element.status == "1"){
-                                stat = "Sudah dibayar"
+                                stat        = "Sudah dibayar"
+                                action_text = 'Lunas'
                             }else{
-                                stat = " - "
+                                stat         = " - "
+                                action_text  = " - "
                             }
                             data_load += '<tr>'
                             data_load += '    <td>'+no+'</td>'
@@ -177,8 +188,11 @@
                             data_load += '    <td>'+element.keterangan+'</td>'
                             data_load += '    <td>'+element.pajak+'</td>'
                             data_load += '    <td>'+stat+'</td>'
-                            data_load += '    <td></td>'
+                            data_load += '    <td>'
+                            data_load += action_text
+                            data_load += '    </td>'
                             data_load += '</tr>'
+                            no++;
                         }
                     }
                     $("#resultPajak").append(data_load);
@@ -188,4 +202,38 @@
                 }
         });
     }
+
+    function update_status(id){
+        $.ajax({
+                url         : '<?= BASEURL;?>/pajak/pelunasan',
+                data        : {id: id},
+                method      : 'post',
+                dataType    : 'json',
+                success     : function(data){
+                    console.log(data);
+                    if(data == 'success'){
+                        $("#message").html(message('Berhasil','Melakukan Pembayaran','success','Pajak'));
+                    }else if (data == 'failed'){
+                        $("#message").html(message('Gagal','Melakukan Pembayaran','danger','Pajak'));
+                    }else{
+                        $("#message").html(message('Gagal','Melakukan Pembayaran','danger','Pajak'));
+                    }
+                },
+                error       : function(data){
+                    console.log(data);
+                }
+        });
+    }
+
+    function message(pesan,aksi,tipe,data){
+        allert_load = "";
+        allert_load += '<div class="alert alert-'+tipe+' alert-dismissible fade show" role="alert">'
+        allert_load +=     '<strong>'+pesan+' </strong> '+aksi+' '+data
+        allert_load +=     '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+        allert_load +=     '<span aria-hidden="true">&times;</span>'
+        allert_load +=     '</button>'
+        allert_load += '</div>'
+        return allert_load
+    }
+
 </script>

@@ -12,7 +12,8 @@ class PajakModel
     public function getDataByKegiatan($id_kegiatan)
     {
         $query = "
-                    SELECT 
+                    SELECT
+                        p.id as id_pajak, 
                         k.tanggal, 
                         p.status, 
                         p.biaya as pajak, 
@@ -84,6 +85,22 @@ class PajakModel
         $this->db->bind('biaya', $biaya);
         $this->db->bind('id_kegiatan', $id_kegiatan);
         $this->db->bind('id_anggaran', $id_anggaran);
+
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
+    public function ubahStatus($id, $status){
+        $query = " UPDATE pajak
+                    SET
+                        status =:status
+                    WHERE
+                        id =:id
+                ";
+        
+        $this->db->query($query);
+        $this->db->bind('status',$status);
+        $this->db->bind('id', $id);
 
         $this->db->execute();
         return $this->db->rowCount();

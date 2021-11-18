@@ -56,21 +56,21 @@ class Anggaran extends Controller
     public function generateStatus()
     {
         $id_kegiatan = $_POST['id'];
-        if ($this->model('AnggaranModel')->ubahStatus($id_kegiatan, "1") > 0 ) {
+        if ($this->model('AnggaranModel')->ubahStatus($id_kegiatan, "1") > 0) {
             $this->model('KegiatanModel')->ubahStatus($id_kegiatan, "1");
             $data = $this->model("AnggaranModel")->getDataByIdKegiatan($id_kegiatan);
-            for ($i=0; $i < count($data); $i++) {
+
+            for ($i = 0; $i < count($data); $i++) {
 
                 $data_loop = $data[$i];
                 $biaya = preg_replace('/[^a-zA-Z0-9_ -]/s', '', $data_loop['biaya']);
                 $id_anggaran = $data_loop['id'];
+                $chkData = $this->model('PajakModel')->cekingData($id_kegiatan, $id_anggaran);
 
-                $chkData = $this->model('PajakModel')->cekingData($id_kegiatan,$id_anggaran);
-                echo $chkData." ==========> \n";
-                if($chkData['CountData'] > 0){
-                    $this->model('PajakModel')->ubahData($biaya,$id_kegiatan,$id_anggaran);
-                }else{
-                    $this->model('PajakModel')->tambahData($biaya,$id_kegiatan,$id_anggaran);
+                if ($chkData['CountData'] > 0) {
+                    $this->model('PajakModel')->ubahData($biaya, $id_kegiatan, $id_anggaran);
+                } else {
+                    $this->model('PajakModel')->tambahData($biaya, $id_kegiatan, $id_anggaran);
                 }
             }
             echo json_encode("success");
