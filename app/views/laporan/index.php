@@ -1,8 +1,8 @@
 <?php 
-    header("Content-type: application/vnd-ms-excel");
-    header("Content-Disposition: attachment; filename=Data Pegawai.xls");
-    header("Program: no-cache");
-    header("Expires: 0");
+    // header("Content-type: application/vnd-ms-excel");
+    // header("Content-Disposition: attachment; filename=Data Pegawai.xls");
+    // header("Program: no-cache");
+    // header("Expires: 0");
 
 ?>
 <!DOCTYPE html>

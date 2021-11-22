@@ -1,6 +1,10 @@
 <body class="fixed-left">
     <!-- Loader -->
-    <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner"></div>
+        </div>
+    </div>
     <!-- Begin page -->
     <div id="wrapper">
         <!-- ========== Left Sidebar Start ========== -->
@@ -35,8 +39,8 @@
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-layers"></i> <span> Personalia </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="<?= BASEURL?>/user">User</a></li>
-                                <li><a href="<?= BASEURL?>/pegawai">Pegawai</a></li>
+                                <li><a href="<?= BASEURL ?>/user">User</a></li>
+                                <li><a href="<?= BASEURL ?>/pegawai">Pegawai</a></li>
                             </ul>
                         </li>
 
@@ -46,9 +50,20 @@
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-bullseye"></i> <span> Kegiatan </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="<?= BASEURL?>/kegiatan">Kegitan</a></li>
-                                <li><a href="<?= BASEURL?>/anggaran">Anggaran</a></li>
-                                <li><a href="<?= BASEURL?>/pajak">Pajak</a></li>
+                                <li><a href="<?= BASEURL ?>/kegiatan">Kegitan</a></li>
+                                <li><a href="<?= BASEURL ?>/anggaran">Anggaran</a></li>
+                                <li><a href="<?= BASEURL ?>/pajak">Pajak</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-title">Laporan</li>
+
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-file-document"></i> <span> Laporan </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="<?= BASEURL ?>/laporan/kegiatan">Kegiatan</a></li>
+                                <li><a href="<?= BASEURL ?>/laporan/anggaran">Anggaran</a></li>
+                                <li><a href="<?= BASEURL ?>/laporan/pajak">Pajak</a></li>
                             </ul>
                         </li>
 
@@ -59,43 +74,40 @@
         </div>
         <!-- Left Sidebar End -->
         <div class="content-page">
-        <!-- Start content -->
-        <div class="content">
-        <!-- Top Bar Start -->
-            <div class="topbar">
-                <nav class="navbar-custom">
-                    <ul class="list-inline float-right mb-0">
+            <!-- Start content -->
+            <div class="content">
+                <!-- Top Bar Start -->
+                <div class="topbar">
+                    <nav class="navbar-custom">
+                        <ul class="list-inline float-right mb-0">
 
-                        <li class="list-inline-item dropdown notification-list">
-                            <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button"
-                            aria-haspopup="false" aria-expanded="false">
-                                <img src="assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                                <!-- item-->
-                                <div class="dropdown-item noti-title">
-                                    <h5>Welcome</h5>
+                            <li class="list-inline-item dropdown notification-list">
+                                <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <img src="assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                                    <!-- item-->
+                                    <div class="dropdown-item noti-title">
+                                        <h5>Welcome</h5>
+                                    </div>
+                                    <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="<?= BASEURL ?>/login/logOut"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
                                 </div>
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="<?= BASEURL?>/login/logOut"><i class="mdi mdi-logout m-r-5 text-muted"></i> Logout</a>
-                            </div>
-                        </li>
+                            </li>
 
-                    </ul>
+                        </ul>
 
-                    <ul class="list-inline menu-left mb-0">
-                        <li class="float-left">
-                            <button class="button-menu-mobile open-left waves-light waves-effect">
-                                <i class="mdi mdi-menu"></i>
-                            </button>
-                        </li>                                
-                    </ul>
+                        <ul class="list-inline menu-left mb-0">
+                            <li class="float-left">
+                                <button class="button-menu-mobile open-left waves-light waves-effect">
+                                    <i class="mdi mdi-menu"></i>
+                                </button>
+                            </li>
+                        </ul>
 
-                    <div class="clearfix"></div>
+                        <div class="clearfix"></div>
 
-                </nav>
-            </div>
-        <!-- Top Bar End -->
-
-    
+                    </nav>
+                </div>
+                <!-- Top Bar End -->

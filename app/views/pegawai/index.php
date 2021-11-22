@@ -32,29 +32,35 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-2 col-form-label">No Pegawai</label>
+                            <label for="example-text-input" class="col-sm-2 col-form-label">NIP</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="text" value="" id="no_pegawai" name="no_pegawai" placeholder="nomor pegawai">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-2 col-form-label">Alamat</label>
+                            <label for="example-text-input" class="col-sm-2 col-form-label">Bidang</label>
                             <div class="col-sm-10">
-                                <!-- <input class="form-control" type="text" value="" id="alamat" name="alamat" placeholder="alamat"> -->
-                                <textarea id="alamat" name="alamat" class="form-control" maxlength="" rows="3" placeholder="Alamat."></textarea>
+                                <select class="form-control" name="bidang" id="bidang">
+                                    <option value="">Select Bidang</option>
+                                    <option value="PS">Prasarana </option>
+                                    <option value="TR">Tata Ruang </option>
+                                    <option value="PE">Perekonomian </option>
+                                    <option value="PM">Pemerintahan</option>
+                                    <option value="KS">Kesejahteraan Sosial </option>
+                                    <option value="PM">Pembiayaan Monitoring</option>
+                                    <option value="EV">Evaluasi</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-2 col-form-label">Agama</label>
+                            <label for="example-text-input" class="col-sm-2 col-form-label">Jabatan</label>
                             <div class="col-sm-10">
-                                <!-- <input class="form-control" type="text" value="" id="user_type" name="user_type"> -->
-                                <select class="form-control" name="agama" id="agama">
-                                    <option value="">Select Type</option>
-                                    <option value="ISL">Islam</option>
-                                    <option value="KRI">Kristen</option>
-                                    <option value="PRO">Protestan</option>
-                                    <option value="BUD">Budha</option>
-                                    <option value="HIN">Hindu</option>
+                                <select class="form-control" name="jabatan" id="jabatan">
+                                    <option value="">Select Jabatan</option>
+                                    <option value="KPA">KPA</option>
+                                    <option value="PTK">PPTK</option>
+                                    <option value="BP">BP</option>
+                                    <option value="BPP">BPP</option>
                                 </select>
                             </div>
                         </div>
@@ -77,8 +83,8 @@
                             <tr>
                                 <th>No Pegawai</th>
                                 <th>Nama</th>
-                                <th>Agama</th>
-                                <th>Alamat</th>
+                                <th>Bidang</th>
+                                <th>Jabatan</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -87,8 +93,8 @@
                             <tr>
                                 <td><?= $data['no_pegawai'];?></td>
                                 <td><?= $data['nama_pegawai'];?></td>
-                                <td><?= $data['agama'];?></td>
-                                <td><?= $data['alamat'];?></td>
+                                <td><?= $data['bidang'];?></td>
+                                <td><?= $data['jabatan'];?></td>
                                 <td>
                                     <a href="<?= BASEURL;?>/pegawai/hapus/<?= $data['id'];?>" class="" onclick="return confirm('Yakin?');">
                                         <span>
@@ -136,8 +142,8 @@
                     $("#id_pegawai").val(data.id);
                     $("#nama_pegawai").val(data.nama_pegawai);
                     $("#no_pegawai").val(data.no_pegawai);
-                    $("#alamat").val(data.alamat);
-                    $("#agama").val(data.agama);
+                    $("#bidang").val(data.bidang);
+                    $("#Jabatan").val(data.Jabatan);
 
                     $(".card-body form").attr('action', '<?= BASEURL;?>/pegawai/ubah')
                     $('.card-body form button[type=submit]').html('Ubah Data')

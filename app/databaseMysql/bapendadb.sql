@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Nov 2021 pada 11.57
+-- Waktu pembuatan: 22 Nov 2021 pada 05.05
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 7.4.23
 
@@ -86,8 +86,8 @@ CREATE TABLE `pajak` (
 --
 
 INSERT INTO `pajak` (`id`, `biaya`, `id_kegiatan`, `id_anggaran`, `status`) VALUES
-(3, 10000, '5', '18', 0),
-(4, 45000, '5', '19', 0);
+(3, 10000, '5', '18', 1),
+(4, 45000, '5', '19', 1);
 
 -- --------------------------------------------------------
 
@@ -98,18 +98,19 @@ INSERT INTO `pajak` (`id`, `biaya`, `id_kegiatan`, `id_anggaran`, `status`) VALU
 CREATE TABLE `pegawai` (
   `id` int(3) NOT NULL,
   `nama_pegawai` varchar(45) NOT NULL,
-  `alamat` text NOT NULL,
   `no_pegawai` varchar(45) NOT NULL,
-  `agama` varchar(5) NOT NULL
+  `bidang` varchar(3) NOT NULL,
+  `jabatan` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `pegawai`
 --
 
-INSERT INTO `pegawai` (`id`, `nama_pegawai`, `alamat`, `no_pegawai`, `agama`) VALUES
-(2, 'Musa Hizami', 'Karawang', '1510631170065', 'ISL'),
-(6, 'Lusi TA', 'Klari', '12457820', 'ISL');
+INSERT INTO `pegawai` (`id`, `nama_pegawai`, `no_pegawai`, `bidang`, `jabatan`) VALUES
+(2, 'Musa Hizami', '1510631170065', 'KS', 'BP'),
+(6, 'Lusi TA', '12457820', 'PS', 'PTK'),
+(7, 'Winda Mangang', '021457892', 'TR', 'PTK');
 
 -- --------------------------------------------------------
 
@@ -192,7 +193,7 @@ ALTER TABLE `pajak`
 -- AUTO_INCREMENT untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
