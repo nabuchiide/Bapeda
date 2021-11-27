@@ -79,7 +79,7 @@ Class KegiatanModel {
     }
 
     public function hapusData($id){
-        $query = " DELETE FROM kegiatan WHERE id=:id;
+        $query = " DELETE FROM kegiatan WHERE id =:id;
                  ";
         $this->db->query($query);
         $this->db->bind('id', $id);
@@ -99,5 +99,14 @@ Class KegiatanModel {
         $this->db->query(" SELECT * FROM kegiatan WHERE status = 0 ORDER BY tanggal DESC ");
         $allData = $this->db->resultset();
         return $allData; 
+    }
+
+    public function getDataByDate($month){
+        $allData = [];
+        $this->db->query(" SELECT * FROM kegiatan WHERE tanggal Like :month ");
+        // $this->stmt->bindValue($param, $value, $type);
+        $this->db->bind('month', $month.'%');
+        $allData = $this->db->resultset();
+        return $allData;
     }
 }

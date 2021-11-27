@@ -14,20 +14,14 @@ class PegawaiModel{
         $allData = $this->db->resultset();
         for ($i=0; $i < count($allData) ; $i++) { 
             $bidang_type_loop = $allData[$i]['bidang'];
-            if($bidang_type_loop == "PS"){
-                $bidang_type_loop = "Prasarana";
-            }else if($bidang_type_loop == "TR"){
-                $bidang_type_loop = "Tata Ruang";
-            }else if($bidang_type_loop == "PE"){
+            if($bidang_type_loop == "PTR"){
+                $bidang_type_loop = "Prasarana dan Tata Ruang";
+            }else if($bidang_type_loop == "PEK"){
                 $bidang_type_loop = "Perekonomian";
-            }else if($bidang_type_loop == "PM"){
-                $bidang_type_loop = "Pemerintahan";
-            }else if($bidang_type_loop == "KS"){
-                $bidang_type_loop = "Kesejahteraan Sosial";
-            }else if($bidang_type_loop == "PM"){
-                $bidang_type_loop = "Pembiayaan Monitoring";
-            }else if($bidang_type_loop == "EV"){
-                $bidang_type_loop = "Evaluasi";
+            }else if($bidang_type_loop == "PKS"){
+                $bidang_type_loop = "Pemerintahan dan Kesejahteraan Sosial";
+            }else if($bidang_type_loop == "PME"){
+                $bidang_type_loop = "Pembiayaan Monitoring dan Evaluasi";
             }else{
                 $bidang_type_loop = " - ";
             }

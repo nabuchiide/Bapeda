@@ -5,11 +5,11 @@
                 <div class="page-title-box">
                     <div class="btn-group float-right">
                         <ol class="breadcrumb hide-phone p-0 m-0">
-                            <li class="breadcrumb-item"><a href="<?= BASEURL?>"><?= APL_NAME; ?></a></li>
-                            <li class="breadcrumb-item active"><?= $data['judul'];?></li>
+                            <li class="breadcrumb-item"><a href="<?= BASEURL ?>"><?= APL_NAME; ?></a></li>
+                            <li class="breadcrumb-item active"><?= $data['judul']; ?></li>
                         </ol>
                     </div>
-                    <h4 class="page-title"><?= ucwords($data['judul']);?></h4>
+                    <h4 class="page-title"><?= ucwords($data['judul']); ?></h4>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -17,13 +17,13 @@
     </div>
     <?php Flasher::flash(); ?>
     <div class="row container-fluid">
-        
+
         <div class="col-lg-5">
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Input Data Pegawai</h4>
                     <!-- SELECT `id`, `nama_pegawai`, `alamat`, `no_pegawai`, `agama` FROM `pegawai` WHERE 1 -->
-                   <form action="<?= BASEURL;?>/pegawai/tambah" method="post" class="form-enter">
+                    <form action="<?= BASEURL; ?>/pegawai/tambah" method="post" class="form-enter">
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Nama</label>
                             <div class="col-sm-10">
@@ -42,13 +42,10 @@
                             <div class="col-sm-10">
                                 <select class="form-control" name="bidang" id="bidang">
                                     <option value="">Select Bidang</option>
-                                    <option value="PS">Prasarana </option>
-                                    <option value="TR">Tata Ruang </option>
-                                    <option value="PE">Perekonomian </option>
-                                    <option value="PM">Pemerintahan</option>
-                                    <option value="KS">Kesejahteraan Sosial </option>
-                                    <option value="PM">Pembiayaan Monitoring</option>
-                                    <option value="EV">Evaluasi</option>
+                                    <option value="PTR">Prasarana dan Tata Ruang</option>
+                                    <option value="PEK">Perekonomian</option>
+                                    <option value="PKS">Pemerintahan dan Kesejahteraan Sosial</option>
+                                    <option value="PME">Pembiayaan Monitoring dan Evaluasi</option>
                                 </select>
                             </div>
                         </div>
@@ -89,30 +86,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($data['pegawai'] as $data) :?>
-                            <tr>
-                                <td><?= $data['no_pegawai'];?></td>
-                                <td><?= $data['nama_pegawai'];?></td>
-                                <td><?= $data['bidang'];?></td>
-                                <td><?= $data['jabatan'];?></td>
-                                <td>
-                                    <a href="<?= BASEURL;?>/pegawai/hapus/<?= $data['id'];?>" class="" onclick="return confirm('Yakin?');">
-                                        <span>
-                                            Hapus
-                                        </span>
-                                    </a> 
-                                    <a  href= "#" class="getUbah" data-id="<?= $data['id']; ?>">
-                                        <span>
-                                        Ubah
-                                        </span>
-                                    </a> 
-                                    <!-- <a href="<?= BASEURL;?>/pegawai/detail/<?= $data['id'];?>" class="">
+                            <?php foreach ($data['pegawai'] as $data) : ?>
+                                <tr>
+                                    <td><?= $data['no_pegawai']; ?></td>
+                                    <td><?= $data['nama_pegawai']; ?></td>
+                                    <td><?= $data['bidang']; ?></td>
+                                    <td><?= $data['jabatan']; ?></td>
+                                    <td>
+                                        <a href="<?= BASEURL; ?>/pegawai/hapus/<?= $data['id']; ?>" class="" onclick="return confirm('Yakin?');">
+                                            <span>
+                                                Hapus
+                                            </span>
+                                        </a>
+                                        <a href="#" class="getUbah" data-id="<?= $data['id']; ?>">
+                                            <span>
+                                                Ubah
+                                            </span>
+                                        </a>
+                                        <!-- <a href="<?= BASEURL; ?>/pegawai/detail/<?= $data['id']; ?>" class="">
                                         <span>
                                             Detail
                                         </span>
                                     </a>  -->
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
@@ -130,27 +127,28 @@
 
         $('#datatable2').DataTable();
 
-        $('.getUbah').on('click', function(){
+        $('.getUbah').on('click', function() {
 
-        const id = $(this).data('id')
-        $.ajax({
-            url         : '<?= BASEURL;?>/pegawai/getUbah/',
-            data        : {id: id},
-            method      : 'post',
-            dataType    : 'json',
-            success     :function(data){
+            const id = $(this).data('id')
+            $.ajax({
+                url: '<?= BASEURL; ?>/pegawai/getUbah/',
+                data: {
+                    id: id
+                },
+                method: 'post',
+                dataType: 'json',
+                success: function(data) {
                     $("#id_pegawai").val(data.id);
                     $("#nama_pegawai").val(data.nama_pegawai);
                     $("#no_pegawai").val(data.no_pegawai);
                     $("#bidang").val(data.bidang);
-                    $("#Jabatan").val(data.Jabatan);
+                    $("#jabatan").val(data.jabatan);
 
-                    $(".card-body form").attr('action', '<?= BASEURL;?>/pegawai/ubah')
+                    $(".card-body form").attr('action', '<?= BASEURL; ?>/pegawai/ubah')
                     $('.card-body form button[type=submit]').html('Ubah Data')
 
                 }
             });
         });
-    } );
-
+    });
 </script>

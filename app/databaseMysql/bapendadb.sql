@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Nov 2021 pada 05.05
+-- Waktu pembuatan: 27 Nov 2021 pada 13.18
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 7.4.23
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `bapendadb`
 --
-CREATE DATABASE IF NOT EXISTS `bapendadb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `bapendadb`;
 
 -- --------------------------------------------------------
 
@@ -108,9 +106,9 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id`, `nama_pegawai`, `no_pegawai`, `bidang`, `jabatan`) VALUES
-(2, 'Musa Hizami', '1510631170065', 'KS', 'BP'),
-(6, 'Lusi TA', '12457820', 'PS', 'PTK'),
-(7, 'Winda Mangang', '021457892', 'TR', 'PTK');
+(2, 'Musa Hizami', '1510631170065', 'PTR', 'BP'),
+(6, 'Lusi TA', '12457820', 'PKS', 'PTK'),
+(7, 'Winda Mangang', '021457892', 'PKS', 'PTK');
 
 -- --------------------------------------------------------
 

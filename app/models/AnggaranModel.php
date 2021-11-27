@@ -29,6 +29,8 @@ class AnggaranModel
         return $allData;
     }
 
+    
+
     public function tambahData($data)
     {
         $query = " INSERT INTO anggaran
@@ -119,4 +121,6 @@ class AnggaranModel
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+    
 }
