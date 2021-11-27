@@ -104,7 +104,6 @@ Class KegiatanModel {
     public function getDataByDate($month){
         $allData = [];
         $this->db->query(" SELECT * FROM kegiatan WHERE tanggal Like :month ");
-        // $this->stmt->bindValue($param, $value, $type);
         $this->db->bind('month', $month.'%');
         $allData = $this->db->resultset();
         return $allData;

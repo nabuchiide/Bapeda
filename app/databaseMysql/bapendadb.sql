@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Nov 2021 pada 13.18
+-- Waktu pembuatan: 28 Nov 2021 pada 00.04
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 7.4.23
 
@@ -41,7 +41,9 @@ CREATE TABLE `anggaran` (
 
 INSERT INTO `anggaran` (`id`, `biaya`, `status`, `id_kegiatan`, `keterangan`) VALUES
 (18, 10000, '1', '5', 'Konsumsi'),
-(19, 45000, '1', '5', 'Pemateri1');
+(19, 45000, '1', '5', 'Pemateri1'),
+(20, 1000000, '1', '6', 'Konsumsi'),
+(21, 5000000, '1', '6', 'transport');
 
 -- --------------------------------------------------------
 
@@ -63,7 +65,8 @@ CREATE TABLE `kegiatan` (
 --
 
 INSERT INTO `kegiatan` (`id`, `nama_kegiatan`, `lokasi`, `tanggal`, `keterangan`, `status`) VALUES
-(5, 'Rapat Paripurna', 'Karawang', '2021-11-15', 'Testing ', '1');
+(5, 'Rapat Paripurna', 'Karawang', '2021-11-15', 'Testing ', '1'),
+(6, 'Rapat Dewan Komisaris', 'Karawang', '2021-10-06', 'oktober', '1');
 
 -- --------------------------------------------------------
 
@@ -85,7 +88,9 @@ CREATE TABLE `pajak` (
 
 INSERT INTO `pajak` (`id`, `biaya`, `id_kegiatan`, `id_anggaran`, `status`) VALUES
 (3, 10000, '5', '18', 1),
-(4, 45000, '5', '19', 1);
+(4, 45000, '5', '19', 0),
+(13, 1000000, '6', '20', 1),
+(14, 5000000, '6', '21', 1);
 
 -- --------------------------------------------------------
 
@@ -108,7 +113,8 @@ CREATE TABLE `pegawai` (
 INSERT INTO `pegawai` (`id`, `nama_pegawai`, `no_pegawai`, `bidang`, `jabatan`) VALUES
 (2, 'Musa Hizami', '1510631170065', 'PTR', 'BP'),
 (6, 'Lusi TA', '12457820', 'PKS', 'PTK'),
-(7, 'Winda Mangang', '021457892', 'PKS', 'PTK');
+(7, 'Winda Mangang', '021457892', 'PKS', 'KPA'),
+(8, 'Hani Agustuni', '0213654789', 'PEK', 'BPP');
 
 -- --------------------------------------------------------
 
@@ -173,25 +179,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `anggaran`
 --
 ALTER TABLE `anggaran`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `pajak`
 --
 ALTER TABLE `pajak`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
