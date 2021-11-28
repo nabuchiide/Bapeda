@@ -1,6 +1,6 @@
 <?php 
 
-define('BASEURL','http://localhost/bapenda/public');
+define('BASEURL','http://localhost/bapeda/public');
 define('APL_NAME','bapenda');
 //DB
 define('DB_HOST', 'localhost');
