@@ -119,16 +119,16 @@
 
 <script>
         $(document).ready(function() {
-            $(document).on('click', '.get-kegiatan-by-date', function(event) {
-                const month = $('#tanggal_kegiatan').val();
-                if (month == '') {
-                    alert('Tanggal harap di isi')
-                } else {
-                    getKegitanByDate(month)
-                    getUntilMonthOne(month)
-                }
-                $('#row-data-laporan').show();
-            })
+            // $(document).on('click', '.get-kegiatan-by-date', function(event) {
+            //     const month = $('#tanggal_kegiatan').val();
+            //     if (month == '') {
+            //         alert('Tanggal harap di isi')
+            //     } else {
+            //         getKegitanByDate(month)
+            //         getUntilMonthOne(month)
+            //     }
+            //     $('#row-data-laporan').show();
+            // })
         })
 
         function getKegitanByDate(month) {
