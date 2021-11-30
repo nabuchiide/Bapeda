@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Nov 2021 pada 00.04
+-- Waktu pembuatan: 30 Nov 2021 pada 01.11
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 7.4.23
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bapendadb`
+-- Database: `bappedadb`
 --
 
 -- --------------------------------------------------------
@@ -32,18 +32,19 @@ CREATE TABLE `anggaran` (
   `biaya` int(10) NOT NULL,
   `status` varchar(1) NOT NULL,
   `id_kegiatan` varchar(20) NOT NULL,
-  `keterangan` text NOT NULL
+  `keterangan` text NOT NULL,
+  `potongan` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `anggaran`
 --
 
-INSERT INTO `anggaran` (`id`, `biaya`, `status`, `id_kegiatan`, `keterangan`) VALUES
-(18, 10000, '1', '5', 'Konsumsi'),
-(19, 45000, '1', '5', 'Pemateri1'),
-(20, 1000000, '1', '6', 'Konsumsi'),
-(21, 5000000, '1', '6', 'transport');
+INSERT INTO `anggaran` (`id`, `biaya`, `status`, `id_kegiatan`, `keterangan`, `potongan`) VALUES
+(18, 100000, '1', '5', 'Konsumsi', 10),
+(19, 450000, '1', '5', 'Pemateri1', 10),
+(20, 1000000, '1', '6', 'Konsumsi', 10),
+(21, 5000000, '1', '6', 'transport', 10);
 
 -- --------------------------------------------------------
 
@@ -88,9 +89,9 @@ CREATE TABLE `pajak` (
 
 INSERT INTO `pajak` (`id`, `biaya`, `id_kegiatan`, `id_anggaran`, `status`) VALUES
 (3, 10000, '5', '18', 1),
-(4, 45000, '5', '19', 0),
-(13, 1000000, '6', '20', 1),
-(14, 5000000, '6', '21', 1);
+(4, 45000, '5', '19', 1),
+(13, 100000, '6', '20', 1),
+(14, 500000, '6', '21', 1);
 
 -- --------------------------------------------------------
 
