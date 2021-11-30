@@ -63,14 +63,15 @@ class Anggaran extends Controller
             for ($i = 0; $i < count($data); $i++) {
 
                 $data_loop = $data[$i];
+                $pajak_loop = intval($data_loop['potongan']) / intval(100);
                 $biaya = preg_replace('/[^a-zA-Z0-9_ -]/s', '', $data_loop['biaya']);
                 $id_anggaran = $data_loop['id'];
                 $chkData = $this->model('PajakModel')->cekingData($id_kegiatan, $id_anggaran);
 
                 if ($chkData['CountData'] > 0) {
-                    $this->model('PajakModel')->ubahData($biaya, $id_kegiatan, $id_anggaran);
+                    $this->model('PajakModel')->ubahData(intval($biaya) * $pajak_loop, $id_kegiatan, $id_anggaran);
                 } else {
-                    $this->model('PajakModel')->tambahData($biaya, $id_kegiatan, $id_anggaran);
+                    $this->model('PajakModel')->tambahData(intval($biaya) * $pajak_loop, $id_kegiatan, $id_anggaran);
                 }
             }
             echo json_encode("success");

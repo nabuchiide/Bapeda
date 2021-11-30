@@ -32,6 +32,7 @@
                         <label for="example-text-input" class="col-sm-3 col-form-label">Tanggal </label>
                         <div class="col-sm-7">
                             <input class="form-control" type="month" id="tanggal_kegiatan">
+                            <input class="form-control" type="hidden" id="id_kegiatan">
                         </div>
                         <div class="col-sm-2">
                             <button class="btn btn-primary waves-effect waves-light get-kegiatan-by-date" type="button"> search </button>
@@ -141,7 +142,9 @@
 
                 </div>
             </div>
-            <a href="<?= BASEURL; ?>/laporan/printLaporanPajak" class="btn btn-primary"> Print </a>
+            <!-- <a href="<?= BASEURL; ?>/laporan/printLaporanPajak" class="btn btn-primary" id="print_excel"> Print </a> -->
+            <a href="#" class="btn btn-primary" id="print_excel" onclick="func_print_excel();"> Print Excel</a>
+            <a href="#" class="btn btn-success" id="print_excel" onclick="func_print_pdf();"> Print PDF</a>
         </div>
     </div>
 
@@ -175,6 +178,8 @@
                     getUntilMonthOne(month)
                 }
                 $('#row-data-laporan').show();
+                // document.getElementById("print_excel").href = "<?= BASEURL; ?>/laporan/printLaporanPajak/"+month+"/"+$('#id_kegiatan').val();
+                
             })
         })
 
@@ -192,6 +197,7 @@
                         for (let i = 0; i < data.length; i++) {
                             const element = data[i];
                             getTotalPajak(element.id)
+                            $('#id_kegiatan').val(element.id)
                             $('.kegiatan_search').html(element.nama_kegiatan)
                             $('.bulan_search').html(month);
                         }
@@ -292,6 +298,20 @@
                     console.log(data);
                 }
             });
+        }
+
+        function func_print_excel(){
+            const month = $('#tanggal_kegiatan').val();
+            const id = $('#id_kegiatan').val();
+            var loaction_url = "<?= BASEURL; ?>/laporan/printLaporanPajak/"+month+"/"+id
+            window.open(loaction_url)
+        }
+
+        function func_print_pdf(){
+            const month = $('#tanggal_kegiatan').val();
+            const id = $('#id_kegiatan').val();
+            var loaction_url = "<?= BASEURL; ?>/laporan/printLaporanPajakPDF/"+month+"/"+id
+            window.open(loaction_url)
         }
 
         function numberWithCommas(x) {

@@ -35,13 +35,14 @@ class AnggaranModel
     {
         $query = " INSERT INTO anggaran
                     VALUES
-                    ('', :biaya, :status, :id_kegiatan, :keterangan)
+                    ('', :biaya, :status, :id_kegiatan, :keterangan, :potongan)
             ";
         $this->db->query($query);
         $this->db->bind('biaya', $data['biaya']);
         $this->db->bind('status', $data['status']);
         $this->db->bind('id_kegiatan', $data['id_kegiatan']);
         $this->db->bind('keterangan', $data['keterangan']);
+        $this->db->bind('potongan', $data['potongan']);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -54,7 +55,8 @@ class AnggaranModel
                         biaya       =:biaya, 
                         status      =:status, 
                         id_kegiatan =:id_kegiatan,
-                        keterangan  =:keterangan
+                        keterangan  =:keterangan,
+                        potongan    =:potongan
                     WHERE 
                         id =:id
             ";
@@ -64,6 +66,7 @@ class AnggaranModel
         $this->db->bind('id_kegiatan', $data['id_kegiatan']);
         $this->db->bind('id', $data['id']);
         $this->db->bind('keterangan', $data['keterangan']);
+        $this->db->bind('potongan', $data['potongan']);
 
         $this->db->execute();
         return $this->db->rowCount();

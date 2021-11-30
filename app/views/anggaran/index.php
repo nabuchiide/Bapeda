@@ -53,6 +53,7 @@ $dataKegiatan       = $data['kegiatan'];
                                 <th>Tanggal</th>
                                 <th>Keterngan</th>
                                 <th>Anggaran</th>
+                                <th>Potongan(%)</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -66,10 +67,13 @@ $dataKegiatan       = $data['kegiatan'];
                                 <td><span id="tanggal_table_anggaran"></span></td>
                                 <td>
                                     <div class="row_data" tabel-col-name="id" style="display:none"></div>
-                                    <div class="row_data" tabel-col-name="keterangan">keterangan</div>
+                                    <div class="row_data" tabel-col-name="keterangan">Keterangan</div>
                                 </td>
                                 <td>
                                     <div class="row_data" tabel-col-name="biaya">Anggaran</div>
+                                </td>
+                                <td>
+                                    <div class="row_data" tabel-col-name="potongan">Potongan</div>
                                 </td>
                                 <td>
                                     <span class="btn-edit"><a href="#" class="btn btn-warning">Edit</a></span>
@@ -284,8 +288,9 @@ $dataKegiatan       = $data['kegiatan'];
                     reloadTabelAnggaran($("#id_kegiatan").val(), $("#tanggal_kegiatan").val())
                     $("#post_msg").empty();
                 },
-                error: function() {
+                error: function(data) {
                     alert("ERROR")
+                    console.log(data)
                 }
 
             });
@@ -316,6 +321,7 @@ $dataKegiatan       = $data['kegiatan'];
                         data_load += '          <div class="row_data" tabel-col-name="keterangan">' + element.keterangan + '</div>'
                         data_load += '    </td>'
                         data_load += '    <td><div class="row_data" tabel-col-name="biaya">' + element.biaya + '</div></td>'
+                        data_load += '    <td><div class="row_data" tabel-col-name="potongan">' + element.potongan + '</div></td>'
                         data_load += '    <td>'
                         if (element.status == 0) {
                             data_load += '        <span class="btn-edit"><a href="#" class="btn btn-warning">Edit</a></span>'
@@ -364,8 +370,7 @@ $dataKegiatan       = $data['kegiatan'];
             $.ajax({
                 url: '<?= BASEURL; ?>/anggaran/hapus',
                 data: {
-                    id,
-                    id
+                    id: id
                 },
                 method: 'post',
                 dataType: 'json',
@@ -388,7 +393,6 @@ $dataKegiatan       = $data['kegiatan'];
     }
 
     function generate() {
-        //alert("GENERATE ")
         const id = $("#id_kegiatan").val();
         $.ajax({
             url: '<?= BASEURL; ?>/anggaran/generateStatus',
@@ -396,10 +400,8 @@ $dataKegiatan       = $data['kegiatan'];
                 id: id
             },
             method: 'post',
-            // dataType : 'json',
+            dataType : 'json',
             success: function(data) {
-                //console.log("SUCCESS :: ");
-                console.log(data);
                 if (data == 'success') {
                     $("#message").html(message('berhasil', 'digenerate', 'success', 'Anggaran'));
                 } else {
@@ -411,7 +413,6 @@ $dataKegiatan       = $data['kegiatan'];
 
             },
             error: function(data) {
-                //console.log("FAIL :: ");
                 console.log(data);
             }
         });

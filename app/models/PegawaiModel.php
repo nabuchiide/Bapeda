@@ -109,4 +109,11 @@ class PegawaiModel
         $this->db->bind('jabatan', $jabatan);
         return $this->db->single();
     }
+
+    public function getNamaByJabatan($jabatan)
+    {
+        $this->db->query("  SELECT nama_pegawai, no_pegawai FROM pegawai WHERE jabatan =:jabatan ");
+        $this->db->bind('jabatan', $jabatan);
+        return $this->db->single();
+    }
 }

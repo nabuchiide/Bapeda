@@ -13,7 +13,7 @@ class LaporanModel
     {
         $allData = [];
         $this->db->query("  SELECT 
-                                k.keterangan, 
+                                a.keterangan, 
                                 k.tanggal, 
                                 a.biaya, 
                                 a.status, 

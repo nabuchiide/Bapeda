@@ -54,15 +54,36 @@ class Laporan extends Controller
         $this->view('templates/footer');
     }
 
-    public function printLaporanPajak()
+    public function printLaporanPajak($month,$id)
     {
+        // $_POST['month'] = $month;
         $data['judul'] = 'Print Laporan Pajak';
-        $data['BP'] = $this->model('PegawaiModel')->getDataByJabatan("BP");
-        $data['PPTK'] = $this->model('PegawaiModel')->getDataByJabatan("PTK");
-        $data['KPA'] = $this->model('PegawaiModel')->getDataByJabatan("KPA");
-        $data['BPP'] = $this->model('PegawaiModel')->getDataByJabatan("BPP");
+        $data['BP'] = $this->model('PegawaiModel')->getNamaByJabatan("BP");
+        $data['PPTK'] = $this->model('PegawaiModel')->getNamaByJabatan("PTK");
+        $data['KPA'] = $this->model('PegawaiModel')->getNamaByJabatan("KPA");
+        $data['BPP'] = $this->model('PegawaiModel')->getNamaByJabatan("BPP");
+        $data['month'] = $month;
+        $data['kegiatan'] = $this->model("KegiatanModel")->getDataByDate($month);
+        $data['total_pajak'] = $this->model("LaporanModel")->getLaporanPajak($id);
+        $data['total_bulan_lalu'] = $this->model("LaporanModel")->getTotalPajakUntilLastMonth($month);
         $this->view('templates/header', $data);
         $this->view("download_laporan/index", $data);
+    }
+
+    public function printLaporanPajakPDF($month,$id)
+    {
+        // $_POST['month'] = $month;
+        $data['judul'] = 'Print Laporan Pajak';
+        $data['BP'] = $this->model('PegawaiModel')->getNamaByJabatan("BP");
+        $data['PPTK'] = $this->model('PegawaiModel')->getNamaByJabatan("PTK");
+        $data['KPA'] = $this->model('PegawaiModel')->getNamaByJabatan("KPA");
+        $data['BPP'] = $this->model('PegawaiModel')->getNamaByJabatan("BPP");
+        $data['month'] = $month;
+        $data['kegiatan'] = $this->model("KegiatanModel")->getDataByDate($month);
+        $data['total_pajak'] = $this->model("LaporanModel")->getLaporanPajak($id);
+        $data['total_bulan_lalu'] = $this->model("LaporanModel")->getTotalPajakUntilLastMonth($month);
+        $this->view('templates/header', $data);
+        $this->view("download_laporan/download_pdf", $data);
     }
 
     public function getKegitanByDate()

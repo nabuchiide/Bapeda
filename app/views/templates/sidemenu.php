@@ -30,7 +30,7 @@
                         <li class="menu-title">Main</li>
 
                         <li>
-                            <a href="index.html" class="waves-effect">
+                            <a href="<?= BASEURL ?>/home" class="waves-effect">
                                 <i class="mdi mdi-airplay"></i>
                                 <span> Dashboard </span>
                             </a>
@@ -61,8 +61,8 @@
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-file-document"></i> <span> Laporan </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="<?= BASEURL ?>/laporan/kegiatan">Kegiatan</a></li>
-                                <li><a href="<?= BASEURL ?>/laporan/anggaran">Anggaran</a></li>
+                                <!-- <li><a href="<?= BASEURL ?>/laporan/kegiatan">Kegiatan</a></li>
+                                <li><a href="<?= BASEURL ?>/laporan/anggaran">Anggaran</a></li> -->
                                 <li><a href="<?= BASEURL ?>/laporan/pajak">Pajak</a></li>
                             </ul>
                         </li>
