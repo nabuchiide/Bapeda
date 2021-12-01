@@ -108,4 +108,15 @@ Class KegiatanModel {
         $allData = $this->db->resultset();
         return $allData;
     }
+
+    public function getCountKegiatan(){
+        $query = "
+                SELECT 
+                    count(*) as total_count 
+                FROM kegiatan k
+                ";
+        $this->db->query($query);
+        $allData = $this->db->single();
+        return $allData;
+    }
 }

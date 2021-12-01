@@ -8,6 +8,19 @@ class AnggaranModel
     {
         $this->db = new Database;
     }
+    public function getAllDataByStatus($status)
+    {
+        $query = "
+                SELECT 
+                    sum(p.biaya) as total_sum 
+                FROM anggaran p 
+                    WHERE p.status =:status
+                ";
+        $this->db->query($query);
+        $this->db->bind('status', $status);
+        $allData = $this->db->single();
+        return $allData;
+    }
 
     public function getAllData()
     {
@@ -29,7 +42,7 @@ class AnggaranModel
         return $allData;
     }
 
-    
+
 
     public function tambahData($data)
     {
@@ -124,6 +137,4 @@ class AnggaranModel
         $this->db->execute();
         return $this->db->rowCount();
     }
-
-    
 }

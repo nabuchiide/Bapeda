@@ -9,6 +9,20 @@ class PajakModel
         $this->db = new Database;
     }
 
+    public function getTotalPajakByStatus($status)
+    {
+        $query = "
+                SELECT 
+                    sum(p.biaya) as total_sum 
+                FROM pajak p 
+                    WHERE p.status =:status
+            ";
+        $this->db->query($query);
+        $this->db->bind('status', $status);
+        $allData = $this->db->single();
+        return $allData;
+    }
+
     public function getDataByKegiatan($id_kegiatan)
     {
         $query = "
@@ -90,16 +104,17 @@ class PajakModel
         return $this->db->rowCount();
     }
 
-    public function ubahStatus($id, $status){
+    public function ubahStatus($id, $status)
+    {
         $query = " UPDATE pajak
                     SET
                         status =:status
                     WHERE
                         id =:id
                 ";
-        
+
         $this->db->query($query);
-        $this->db->bind('status',$status);
+        $this->db->bind('status', $status);
         $this->db->bind('id', $id);
 
         $this->db->execute();
