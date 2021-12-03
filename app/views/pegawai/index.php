@@ -54,7 +54,7 @@
                             <div class="col-sm-10">
                                 <select class="form-control" name="jabatan" id="jabatan">
                                     <option value="">Select Jabatan</option>
-                                    <option value="KPA">Kuasa Penerima Anggaran</option>
+                                    <option value="KPA">Kuasa Pengguna Anggaran</option>
                                     <option value="BPP">Bendahara pembantu</option>
                                     <option value="BPP">Bendahara pembantu pengeluaran</option>
                                     <option value="PTK">Pejabat Pelaksana Teknis Kegiatan</option>

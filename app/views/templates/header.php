@@ -18,6 +18,8 @@
     <link href="<?= BASEURL?>/assets/css/icons.css" rel="stylesheet" type="text/css">
     <link href="<?= BASEURL?>/assets/css/style.css" rel="stylesheet" type="text/css">
 
+    <link rel="stylesheet" href="<?= BASEURL?>/assets/plugins/morris/morris.css">
+
      <!-- jQuery  -->
     <script src="<?= BASEURL?>/assets/js/jquery.min.js"></script>
     <script src="<?= BASEURL?>/assets/js/popper.min.js"></script>
@@ -50,5 +52,7 @@
 
     <!-- Datatable init js -->
     <script src="<?= BASEURL?>/assets/pages/datatables.init.js"></script> 
+
+
 
 </head>

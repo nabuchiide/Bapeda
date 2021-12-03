@@ -33,7 +33,7 @@ class PegawaiModel
             $jabatan_type_loop = $allData[$i]['jabatan'];
 
             if ($jabatan_type_loop == "KPA") {
-                $jabatan_type_loop = "Kuasa Penerima Anggaran";
+                $jabatan_type_loop = "Kuasa Pengguna Anggaran";
             } else if ($jabatan_type_loop == "PTK") {
                 $jabatan_type_loop = "Pejabat Pelaksana Teknis Kegiatan";
             } else if ($jabatan_type_loop == "BP") {

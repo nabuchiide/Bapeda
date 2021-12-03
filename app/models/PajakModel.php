@@ -9,6 +9,35 @@ class PajakModel
         $this->db = new Database;
     }
 
+    public function getTotalPajakAllByStatus($status)
+    {
+        $query = "
+                    SELECT
+                        p.id as id_pajak, 
+                        k.tanggal,
+                        k.nama_kegiatan,
+                        p.status, 
+                        p.biaya as pajak, 
+                        a.biaya as anggaran, 
+                        a.keterangan
+                    FROM 
+                        pajak p, 
+                        anggaran a, 
+                        kegiatan k 
+                    WHERE 
+                        p.id_kegiatan = k.id 
+                    AND 
+                        p.id_anggaran = a.id 
+                    AND 
+                        p.status =:status
+                    limit 5
+                ";
+        $this->db->query($query);
+        $this->db->bind('status', $status);
+        $allData = $this->db->resultset();
+        return $allData;
+    }
+
     public function getTotalPajakByStatus($status)
     {
         $query = "
