@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Nov 2021 pada 01.11
+-- Waktu pembuatan: 05 Des 2021 pada 07.34
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 7.4.23
 
@@ -89,9 +89,9 @@ CREATE TABLE `pajak` (
 
 INSERT INTO `pajak` (`id`, `biaya`, `id_kegiatan`, `id_anggaran`, `status`) VALUES
 (3, 10000, '5', '18', 1),
-(4, 45000, '5', '19', 1),
+(4, 45000, '5', '19', 0),
 (13, 100000, '6', '20', 1),
-(14, 500000, '6', '21', 1);
+(14, 500000, '6', '21', 0);
 
 -- --------------------------------------------------------
 
