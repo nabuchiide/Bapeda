@@ -149,4 +149,13 @@ class PajakModel
         $this->db->execute();
         return $this->db->rowCount();
     }
+
+    public function hapusDataByKegiatan($id_kegiatan)
+    {
+        $query = " DELETE FROM pajak WHERE id_kegiatan =:id_kegiatan ";
+        $this->db->query($query);
+        $this->db->bind('id_kegiatan', $id_kegiatan);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
 }

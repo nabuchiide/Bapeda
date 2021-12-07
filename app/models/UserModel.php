@@ -88,6 +88,20 @@ class UserModel
     {
         $allData = [];
         $query = " SELECT count(*) AS CountData FROM user WHERE user_name =:user_name AND password =:password ";
+        // $query = " SELECT * FROM user WHERE user_name =:user_name AND password =:password ";
+
+        $this->db->query($query);
+        $this->db->bind('user_name', $data['user_name']);
+        $this->db->bind('password', $data['password']);
+        $allData = $this->db->single();
+        return $allData;
+    }
+
+    public function prosessLoginGetData($data)
+    {
+        $allData = [];
+        // $query = " SELECT count(*) AS CountData FROM user WHERE user_name =:user_name AND password =:password ";
+        $query = " SELECT * FROM user WHERE user_name =:user_name AND password =:password ";
 
         $this->db->query($query);
         $this->db->bind('user_name', $data['user_name']);

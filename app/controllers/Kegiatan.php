@@ -41,6 +41,7 @@ class Kegiatan extends Controller{
     public function hapus($id){
         if($this->model('KegiatanModel')->hapusData($id)>0 ){
             $this->model('AnggaranModel')->hapusDataByKegiatan($id); 
+            $this->model('PajakModel')->hapusDataByKegiatan($id); 
             Flasher::setFlash('berhasil', 'dihapus', 'success', 'User');
             header('Location: '.BASEURL.'/kegiatan');
             exit;

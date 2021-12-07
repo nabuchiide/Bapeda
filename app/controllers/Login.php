@@ -1,33 +1,40 @@
 <?php
 
-class Login extends Controller{
+class Login extends Controller
+{
 
-    public function idex(){
-        $this->view('login/index');
+    public function idex()
+    {
+        $data['judul'] = 'Login';
+        $this->view('login/index',$data);
     }
 
-    public function login_process(){
+    public function login_process()
+    {
         $countData = $this->model('userModel')->prosessLogin($_POST);
-
-        if($countData['CountData'] > 0){
+        $data = $this->model('userModel')->prosessLoginGetData($_POST);
+        
+        if ($countData['CountData'] > 0) {
             $_SESSION['login'] = [
                 'status' => true,
-                'uname' =>$_POST['user_name']
+                'uname' => $_POST['user_name'],
+                'type'  => $data['user_type']
             ];
-           
-            header('Location: '.BASEURL.'/');
+
+            header('Location: ' . BASEURL . '/');
             exit;
-        }else{
-                unset($_SESSION['login']);
-                header('Location: '.BASEURL.'/login');
-                exit;
+        } else {
+            Flasher::setFlash('gagal', 'user name atau password anda salah', 'danger', '');
+            unset($_SESSION['login']);
+            header('Location: ' . BASEURL . '/login');
+            exit;
         }
-        
     }
 
-    public function logOut(){
+    public function logOut()
+    {
         unset($_SESSION['login']);
-        header('Location: '.BASEURL.'/');
+        header('Location: ' . BASEURL . '/');
         exit;
     }
 }

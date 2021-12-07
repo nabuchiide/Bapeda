@@ -11,6 +11,7 @@ class Anggaran extends Controller
         $this->view('anggaran/index', $data);
         $this->view('templates/footer');
     }
+    
 
     public function getByKegitanAnggaran()
     {

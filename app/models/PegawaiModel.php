@@ -116,4 +116,10 @@ class PegawaiModel
         $this->db->bind('jabatan', $jabatan);
         return $this->db->single();
     }
+
+    public function getDataCountJabatan($jabatan){
+        $this->db->query("  SELECT count(*) AS CountData FROM pegawai WHERE jabatan =:jabatan ");
+        $this->db->bind('jabatan', $jabatan);
+        return $this->db->single();
+    }
 }

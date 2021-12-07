@@ -1,3 +1,8 @@
+<?php 
+        echo '<pre>';
+        print_r($_SESSION);
+        echo '</pre>';
+    ?> 
             </div>
             <!-- end of content -->
             <footer class="footer">
@@ -6,6 +11,7 @@
         </div>
         
     </div>
+    
 </body>
    
     <!-- App js -->
@@ -15,4 +21,6 @@
         location.href = "<?= BASEURL;?>/"+url;
     }
     </script>
+
+ 
 </html>
