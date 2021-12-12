@@ -76,7 +76,7 @@ $dataKegiatan       = $data['kegiatan'];
                                     <div class="row_data" tabel-col-name="potongan">Potongan</div>
                                 </td>
                                 <td>
-                                    <span class="btn-edit"><a href="#" class="btn btn-warning">Edit</a></span>
+                                    <span class="btn-edit"><a href="#" class="btn btn-warning">Ubah</a></span>
                                     <span class="btn-save"><a href="#" class="btn btn-primary">Save</a></span>
                                     <span class="btn-cancel"><a href="#" class="btn btn-link">Cancel</a></span>
                                 </td>
@@ -324,7 +324,7 @@ $dataKegiatan       = $data['kegiatan'];
                         data_load += '    <td><div class="row_data" tabel-col-name="potongan">' + element.potongan + '</div></td>'
                         data_load += '    <td>'
                         if (element.status == 0) {
-                            data_load += '        <span class="btn-edit"><a href="#" class="btn btn-warning">Edit</a></span>'
+                            data_load += '        <span class="btn-edit"><a href="#" class="btn btn-warning">Ubah</a></span>'
                             data_load += '        <a href="#" class="btn btn-danger btn-delete" onclick="deleteData(' + element.id + ')">delete</a>'
                             data_load += '        <span class="btn-save"><a href="#" class="btn btn-primary">Save</a></span>'
                             data_load += '        <span class="btn-cancel"><a href="#" class="btn btn-link">Cancel</a></span>'

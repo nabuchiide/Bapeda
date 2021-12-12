@@ -1,12 +1,13 @@
-<?php 
-        // echo '<pre>';
-        // print_r($_SESSION);
-        // echo '</pre>';
-    ?> 
+<!-- <?php 
+        echo '<pre>';
+        print_r($_SESSION);
+        print_r($_SESSION['login']['type']);
+        echo '</pre>';
+    ?>  -->
             </div>
             <!-- end of content -->
             <footer class="footer">
-                © 2019 Zoter by Mannatthemes.
+                Copyright © 2021 Winda & Lusi. <br> <strong>STMIK HORIZON KARAWANG</strong> 
             </footer>
         </div>
         

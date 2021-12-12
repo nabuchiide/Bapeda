@@ -5,24 +5,24 @@
                 <div class="page-title-box">
                     <div class="btn-group float-right">
                         <ol class="breadcrumb hide-phone p-0 m-0">
-                            <li class="breadcrumb-item"><a href="<?= BASEURL?>"><?= APL_NAME; ?></a></li>
-                            <li class="breadcrumb-item active"><?= $data['judul'];?></li>
+                            <li class="breadcrumb-item"><a href="<?= BASEURL ?>"><?= APL_NAME; ?></a></li>
+                            <li class="breadcrumb-item active"><?= $data['judul']; ?></li>
                         </ol>
                     </div>
-                    <h4 class="page-title "><?= ucwords($data['judul']);?></h4>
+                    <h4 class="page-title "><?= ucwords($data['judul']); ?></h4>
                 </div>
             </div>
             <div class="clearfix"></div>
         </div>
     </div>
+    <?php Flasher::flash(); ?>
     <div class="row container-fluid">
-        <?php Flasher::flash(); ?>
         <div class="col-lg-5">
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Input Data User</h4>
-                    <form action="<?=BASEURL; ?>/user/tambah" method="post" class="form-enter">
-                    <!-- SELECT `id`, `user_name`, `password`, `user_type`, `no_pegawai` FROM `user` WHERE 1 -->
+                    <form action="<?= BASEURL; ?>/user/tambah" method="post" class="form-enter">
+                        <!-- SELECT `id`, `user_name`, `password`, `user_type`, `no_pegawai` FROM `user` WHERE 1 -->
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label">User Name</label>
                             <div class="col-sm-10">
@@ -42,9 +42,9 @@
                                 <!-- <input class="form-control" type="text" value="" id="user_type" name="user_type"> -->
                                 <select class="form-control" id="user_type" name="user_type">
                                     <option value="">Select Type</option>
+                                    <option value="KP">Kuasa Pengguna Anggaran</option>
+                                    <option value="BP">Bendahara Pengeluaran Pembantu </option>
                                     <option value="AD">Admin</option>
-                                    <option value="L1">Level 1</option>
-                                    <option value="L2">Level 2</option>
                                 </select>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="col-lg-7">
             <div class="card">
                 <div class="card-body">
@@ -84,32 +84,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php 
-                                $dataPegawai    = $data['pegawai'];
-                                $dataUser       = $data['user'];
-                                foreach( $dataUser as $data) : ?>
-                            <tr>
-                                <td><?= $data['user_name'];?></td>
-                                <td><?= $data['user_type'];?></td>
-                                <td><?= $data['nama_pegawai'];?></td>
-                                <td>
-                                    <a href="<?= BASEURL;?>/user/hapus/<?= $data['id'];?>" class="" onclick="return confirm('Yakin?');">
-                                        <span>
-                                            Hapus
-                                        </span>
-                                    </a> 
-                                    <a  href= "#" class="getUbah" data-id="<?= $data['id']; ?>">
-                                        <span>
-                                        Ubah
-                                        </span>
-                                    </a> 
-                                    <!-- <a href="<?= BASEURL;?>/user/detail/<?= $data['id'];?>" class="">
+                            <?php
+                            $dataPegawai    = $data['pegawai'];
+                            $dataUser       = $data['user'];
+                            foreach ($dataUser as $data) : ?>
+                                <tr>
+                                    <td><?= $data['user_name']; ?></td>
+                                    <td><?= $data['user_type']; ?></td>
+                                    <td><?= $data['nama_pegawai']; ?></td>
+                                    <td>
+                                        <a href="<?= BASEURL; ?>/user/hapus/<?= $data['id']; ?>" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Yakin?');">
+                                            <span>
+                                                Hapus
+                                            </span>
+                                        </a>
+                                        <a href="#" class="getUbah btn btn-primary waves-effect waves-light" data-id="<?= $data['id']; ?>">
+                                            <span>
+                                                Ubah
+                                            </span>
+                                        </a>
+                                        <!-- <a href="<?= BASEURL; ?>/user/detail/<?= $data['id']; ?>" class="">
                                         <span>
                                             Detail
                                         </span>
                                     </a>  -->
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
@@ -124,84 +124,83 @@
 <div class="modal fade bd-example-modal-lg" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="dataModalLabel">Data Pegawai</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body table-responsive">
-            <table class="table table-bordered data-table-format " width = "100%">
-                
-                <thead>
-                    <tr>
-                        <td>NO</td>
-                        <td>Nomor Pegawai</td>
-                        <td>Nama Pegawai</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $no = 1;?>
-                    <?php foreach($dataPegawai as $data) : ?>
-                    <tr>
-                        <td><?= $no;?></td>
-                        <td>
-                            <a href= "#" class="getNomorPegawai" data-nomor="<?= $data['no_pegawai']; ?>" data-dismiss="modal">
-                                <span>
-                                    <?= $data['no_pegawai'];?>
-                                </span>
-                            </a>
-                        </td>
-                        <td><?= $data['nama_pegawai'];?></td>
-                    </tr>
-                    <?php $no++; ?>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+            <div class="modal-header">
+                <h5 class="modal-title" id="dataModalLabel">Data Pegawai</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body table-responsive">
+                <table class="table table-bordered data-table-format " width="100%">
+
+                    <thead>
+                        <tr>
+                            <td>NO</td>
+                            <td>Nomor Pegawai</td>
+                            <td>Nama Pegawai</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $no = 1; ?>
+                        <?php foreach ($dataPegawai as $data) : ?>
+                            <tr>
+                                <td><?= $no; ?></td>
+                                <td>
+                                    <a href="#" class="getNomorPegawai" data-nomor="<?= $data['no_pegawai']; ?>" data-dismiss="modal">
+                                        <span>
+                                            <?= $data['no_pegawai']; ?>
+                                        </span>
+                                    </a>
+                                </td>
+                                <td><?= $data['nama_pegawai']; ?></td>
+                            </tr>
+                            <?php $no++; ?>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
-    $(document).ready(function(){
-        $('.form-enter').on('keypress', function(e) {
-            return e.which !== 13;
-        });
+    <script>
+        $(document).ready(function() {
+            $('.form-enter').on('keypress', function(e) {
+                return e.which !== 13;
+            });
 
-        $('.data-table-format').DataTable();
+            $('.data-table-format').DataTable();
 
-        $('.getUbah').on('click', function(){
-            const id = $(this).data('id')
-            console.log(id);
-            $.ajax({
-                url         : '<?= BASEURL;?>/user/getUbah/',
-                data        : {id: id},
-                method      : 'post',
-                dataType    : 'json',
-                success     : function(data){
-                    console.log(data);
-                    $('#id_user').val(data.id);
-                    $('#user_name').val(data.user_name);
-                    $('#password').val(data.password);
-                    $('#user_type').val(data.user_type);
-                    $('#no_pegawai').val(data.no_pegawai);
-                    $('#no_pegawai_hide').val(data.no_pegawai);
+            $('.getUbah').on('click', function() {
+                const id = $(this).data('id')
+                console.log(id);
+                $.ajax({
+                    url: '<?= BASEURL; ?>/user/getUbah/',
+                    data: {
+                        id: id
+                    },
+                    method: 'post',
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log(data);
+                        $('#id_user').val(data.id);
+                        $('#user_name').val(data.user_name);
+                        $('#password').val(data.password);
+                        $('#user_type').val(data.user_type);
+                        $('#no_pegawai').val(data.no_pegawai);
+                        $('#no_pegawai_hide').val(data.no_pegawai);
 
-                    $(".card-body form").attr('action', '<?= BASEURL;?>/user/ubah')
-                    $('.card-body form button[type=submit]').html('Ubah Data')
-                }
+                        $(".card-body form").attr('action', '<?= BASEURL; ?>/user/ubah')
+                        $('.card-body form button[type=submit]').html('Ubah Data')
+                    }
+                })
+            })
+
+            $('.getNomorPegawai').on('click', function() {
+                const nomor = $(this).data('nomor');
+                $('#no_pegawai').val(nomor)
+                $('#no_pegawai_hide').val(nomor)
+                $('#dataModal').modal('no_pegawai');
+                $('#dataModal').modal('no_pegawai_hide');
             })
         })
-
-        $('.getNomorPegawai').on('click', function(){
-            const nomor = $(this).data('nomor');
-            $('#no_pegawai').val(nomor)
-            $('#no_pegawai_hide').val(nomor)
-            $('#dataModal').modal('no_pegawai');
-            $('#dataModal').modal('no_pegawai_hide');
-        })
-    })
-
-    
-</script>
-
+    </script>

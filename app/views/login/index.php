@@ -10,7 +10,7 @@
     <meta content="Mannatthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <link rel="shortcut icon" href="<?= BASEURL ?>/assets/images/favicon.ico">
+    <link rel="icon" href="<?= BASEURL ?>/assets/images/favicon-logo.ico">
 
     <link href="<?= BASEURL ?>/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="<?= BASEURL ?>/assets/css/icons.css" rel="stylesheet" type="text/css">
@@ -18,18 +18,21 @@
 
 </head>
 
-<body>
-
-
+<body class="fixed-left ">
     <!-- Begin page -->
-    <div class="accountbg"></div>
-    <div class="wrapper-page">
-
+    <div class="wrapper-page ">
         <div class="card">
             <div class="card-body">
-
-                <div class="text-center">
-                    <a href="index.html" class="logo logo-admin"><img src="<?= BASEURL ?>/assets/images/e-logo.png" height="20" alt="logo"></a>
+                <div class="col offset-md-2">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-2 mt-1">
+                            <a href="index.html" class="logo logo-admin"><img src="<?= BASEURL ?>/assets/images/bappeda-logo.png" height="70" alt="logo"></a>
+                        </div>
+                        <div class="col mt-1">
+                            <h3 class="mb-0">BAPPEDA</h3>
+                            <h6 class="mt-0">Kabupaten Karawang</h6>
+                        </div>
+                    </div>
                 </div>
                 <?php Flasher::flashMsg(); ?>
 
@@ -54,8 +57,6 @@
                                 <button class="btn btn-danger btn-block waves-effect waves-light" type="submit">Log In</button>
                             </div>
                         </div>
-
-
                     </form>
                 </div>
 

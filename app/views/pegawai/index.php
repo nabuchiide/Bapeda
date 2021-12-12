@@ -16,9 +16,8 @@
         </div>
     </div>
     <?php Flasher::flash(); ?>
-    <div class="row container-fluid">
-
-        <div class="col-lg-5">
+    <div class="row container-fluid text-center">
+        <div class="col-lg-5 text-center">
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Input Data Pegawai</h4>
@@ -72,7 +71,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-7">
+    </div>
+    <div class="row container-fluid">
+        <div class="col-lg-10">
             <div class="card">
                 <div class="card-body">
                     <table id="datatable2" class="table table-bordered">
@@ -93,12 +94,12 @@
                                     <td><?= $data['bidang']; ?></td>
                                     <td><?= $data['jabatan']; ?></td>
                                     <td>
-                                        <a href="<?= BASEURL; ?>/pegawai/hapus/<?= $data['id']; ?>" class="" onclick="return confirm('Yakin?');">
+                                        <a href="<?= BASEURL; ?>/pegawai/hapus/<?= $data['id']; ?>" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Yakin?');">
                                             <span>
                                                 Hapus
                                             </span>
                                         </a>
-                                        <a href="#" class="getUbah" data-id="<?= $data['id']; ?>">
+                                        <a href="#" class="getUbah btn btn-primary waves-effect waves-light" data-id="<?= $data['id']; ?>">
                                             <span>
                                                 Ubah
                                             </span>

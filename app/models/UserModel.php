@@ -18,10 +18,10 @@ class UserModel
             $user_type_loop = $allData[$i]["user_type"];
             if ($user_type_loop == "AD") {
                 $user_type_loop = "Admin";
-            } else if ($user_type_loop == "L1") {
-                $user_type_loop = "Level 1";
-            } else if ($user_type_loop == "L2") {
-                $user_type_loop = "Level 2";
+            } else if ($user_type_loop == "KP") {
+                $user_type_loop = "Kuasa Pengguna Anggaran";
+            } else if ($user_type_loop == "BP") {
+                $user_type_loop = "Bendahara Pengeluaran Pembantu";
             } else {
                 $user_type_loop = "Invalid Format";
             }

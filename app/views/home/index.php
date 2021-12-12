@@ -174,11 +174,13 @@
             element: 'chartData',
             data: [{
                     label: 'Lunas',
-                    value: <?= $dataLunas; ?>
+                    value: <?= $dataLunas; ?>,
+                    color: '#00b359'
                 },
                 {
-                    label: 'tunggakan',
-                    value: <?= $dataTunggakan ?>
+                    label: 'Tunggakan',
+                    value: <?= $dataTunggakan ?>,
+                    color : '#ff0303'
                 }
             ]
         });
