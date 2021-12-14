@@ -54,7 +54,7 @@
                                 <select class="form-control" name="jabatan" id="jabatan">
                                     <option value="">Select Jabatan</option>
                                     <option value="KPA">Kuasa Pengguna Anggaran</option>
-                                    <option value="BPP">Bendahara pembantu</option>
+                                    <option value="BP">Bendahara pengeluaran</option>
                                     <option value="BPP">Bendahara pembantu pengeluaran</option>
                                     <option value="PTK">Pejabat Pelaksana Teknis Kegiatan</option>
                                 </select>
@@ -119,7 +119,7 @@
         </div>
     </div>
 </div>
-
+<br>
 <script>
     $(document).ready(function() {
         $('.form-enter').on('keypress', function(e) {
