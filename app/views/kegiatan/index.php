@@ -88,12 +88,12 @@
                                     </td>
                                     <td><?= $data['lokasi'];?></td>
                                     <td>
-                                        <a href="<?= BASEURL;?>/kegiatan/hapus/<?= $data['id'];?>" class="" onclick="return confirm('Yakin?');">
+                                        <a href="<?= BASEURL;?>/kegiatan/hapus/<?= $data['id'];?>" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Yakin?');">
                                             <span>
                                                 Hapus
                                             </span>
                                         </a> 
-                                        <a  href= "#" class="getUbah" data-id="<?= $data['id'];?>">
+                                        <a  href= "#" class="getUbah btn btn-primary waves-effect waves-light" data-id="<?= $data['id'];?>">
                                             <span>
                                             Ubah
                                             </span>
