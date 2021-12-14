@@ -35,37 +35,39 @@
             <div class="sidebar-inner niceScrollleft">
 
                 <div id="sidebar-menu">
+                    <?php
+                    if ($_SESSION['login']['type'] == 'MR') {
+                    ?>
+                        <ul>
+                            <li>
+                                <a href="<?= BASEURL ?>/home" class="waves-effect">
+                                    <i class="mdi mdi-airplay"></i>
+                                    <span> Dashboard </span>
+                                </a>
+                            </li>
 
-                    <ul>
-                        <li>
-                            <a href="<?= BASEURL ?>/home" class="waves-effect">
-                                <i class="mdi mdi-airplay"></i>
-                                <span> Dashboard </span>
-                            </a>
-                        </li>
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-layers"></i> <span> Personalia </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="<?= BASEURL ?>/user">User</a></li>
+                                    <li><a href="<?= BASEURL ?>/pegawai">Pegawai</a></li>
+                                </ul>
+                            </li>
 
-                        <li class="has_sub">
-                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-layers"></i> <span> Personalia </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
-                            <ul class="list-unstyled">
-                                <li><a href="<?= BASEURL ?>/user">User</a></li>
-                                <li><a href="<?= BASEURL ?>/pegawai">Pegawai</a></li>
-                            </ul>
-                        </li>
+                            <li class="menu-title">Main</li>
 
-                        <li class="menu-title">Main</li>
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-bullseye"></i> <span> Kegiatan </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="<?= BASEURL ?>/kegiatan">Kegitan</a></li>
+                                    <li><a href="<?= BASEURL ?>/anggaran">Anggaran</a></li>
+                                    <li><a href="<?= BASEURL ?>/pajak">Pajak</a></li>
+                                </ul>
+                            </li>
 
-                        <li class="has_sub">
-                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-bullseye"></i> <span> Kegiatan </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
-                            <ul class="list-unstyled">
-                                <li><a href="<?= BASEURL ?>/kegiatan">Kegitan</a></li>
-                                <li><a href="<?= BASEURL ?>/anggaran">Anggaran</a></li>
-                                <li><a href="<?= BASEURL ?>/pajak">Pajak</a></li>
-                            </ul>
-                        </li>
+                            <li class="menu-title">Laporan</li>
 
-                        <li class="menu-title">Laporan</li>
-
-                        <!-- <li class="has_sub">
+                            <!-- <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-file-document"></i> <span> Laporan </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="<?= BASEURL ?>/laporan/kegiatan">Kegiatan</a></li>
@@ -74,15 +76,88 @@
                                 </ul>
                             </li> -->
 
-                        <li>
-                            <a href="<?= BASEURL ?>/laporan/pajak" class="waves-effect">
-                                <i class="mdi mdi-file-document"></i>
-                                <span> Laporan Pajak </span>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="<?= BASEURL ?>/laporan/pajak" class="waves-effect">
+                                    <i class="mdi mdi-file-document"></i>
+                                    <span> Laporan Pajak </span>
+                                </a>
+                            </li>
 
-                    </ul>
+                        </ul>
+                    <?php } else if ($_SESSION['login']['type'] == 'AD') { ?>
+                        <ul>
+                            <li>
+                                <a href="<?= BASEURL ?>/home" class="waves-effect">
+                                    <i class="mdi mdi-airplay"></i>
+                                    <span> Dashboard </span>
+                                </a>
+                            </li>
 
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-layers"></i> <span> Personalia </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="<?= BASEURL ?>/user">User</a></li>
+                                    <li><a href="<?= BASEURL ?>/pegawai">Pegawai</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="menu-title">Main</li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-bullseye"></i> <span> Kegiatan </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="<?= BASEURL ?>/kegiatan">Kegitan</a></li>
+                                    <li><a href="<?= BASEURL ?>/anggaran">Anggaran</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    <?php } else if ($_SESSION['login']['type'] == 'BP') { ?>
+                        <ul>
+                            <li>
+                                <a href="<?= BASEURL ?>/home" class="waves-effect">
+                                    <i class="mdi mdi-airplay"></i>
+                                    <span> Dashboard </span>
+                                </a>
+                            </li>
+
+                            <li class="menu-title">Main</li>
+
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-bullseye"></i> <span> Kegiatan </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="<?= BASEURL ?>/pajak">Pajak</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="menu-title">Laporan</li>
+
+                            <li>
+                                <a href="<?= BASEURL ?>/laporan/pajak" class="waves-effect">
+                                    <i class="mdi mdi-file-document"></i>
+                                    <span> Laporan Pajak </span>
+                                </a>
+                            </li>
+                        </ul>
+                    <?php } else if ($_SESSION['login']['type'] == 'KP') { ?>
+                        <ul>
+                            <li>
+                                <a href="<?= BASEURL ?>/home" class="waves-effect">
+                                    <i class="mdi mdi-airplay"></i>
+                                    <span> Dashboard </span>
+                                </a>
+                            </li>
+
+                            <li class="menu-title">Laporan</li>
+
+                            <li>
+                                <a href="<?= BASEURL ?>/laporan/pajak" class="waves-effect">
+                                    <i class="mdi mdi-file-document"></i>
+                                    <span> Laporan Pajak </span>
+                                </a>
+                            </li>
+                        </ul>
+                    <?php } ?>
                 </div>
                 <div class="clearfix"></div>
             </div> <!-- end sidebarinner -->
