@@ -94,7 +94,7 @@
                                     <td><?= $data['bidang']; ?></td>
                                     <td><?= $data['jabatan']; ?></td>
                                     <td>
-                                        <a href="<?= BASEURL; ?>/pegawai/hapus/<?= $data['id']; ?>" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Yakin?');">
+                                        <a href="<?= BASEURL; ?>/pegawai/hapus/<?= $data['id']; ?>/<?=$data['jabatan']?>" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Yakin?');">
                                             <span>
                                                 Hapus
                                             </span>

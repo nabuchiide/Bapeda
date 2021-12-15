@@ -7,7 +7,8 @@
     <title><?= $data['judul'];?></title>
 
     <link rel="shortcut icon" href="assets/images/favicon-logo.ico">
-
+    <!-- <link rel="shortcut icon" href="<?= BASEURL ?>/assets/images/bappeda-logo.png"> -->
+    
     <!-- jvectormap -->
     <link href="<?= BASEURL?>/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
     <link href="<?= BASEURL?>/assets/plugins/fullcalendar/vanillaCalendar.css" rel="stylesheet" type="text/css"  />

@@ -17,10 +17,9 @@
             <div class="topbar-left bg-success">
                 <div class="text-left offset-md-1">
                     <!--<a href="index.html" class="logo"><i class="mdi mdi-assistant"></i>Zoter</a>-->
-                    <div class="row justify-content-md-center">
+                    <!-- <div class="row justify-content-md-center">
                         <div class="col-md-2 mt-1">
                             <a href="index.html" class="logo mt-1">
-                                <!-- <img src="assets/images/logo-lg.png" alt="" class="logo-large"> -->
                                 <img src="<?= BASEURL ?>/assets/images/bappeda-logo.png" height="50" alt="logo">
                             </a>
                         </div>
@@ -28,7 +27,7 @@
                             <h3 class="mb-0">BAPPEDA</h3>
                             <h6 class="mt-0">Kabupaten Karawang</h6>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 

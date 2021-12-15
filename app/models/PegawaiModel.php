@@ -37,9 +37,9 @@ class PegawaiModel
             } else if ($jabatan_type_loop == "PTK") {
                 $jabatan_type_loop = "Pejabat Pelaksana Teknis Kegiatan";
             } else if ($jabatan_type_loop == "BP") {
-                $jabatan_type_loop = "Bendahara pengeluaran";
+                $jabatan_type_loop = "Bendahara Pengeluaran";
             } else if ($jabatan_type_loop == "BPP") {
-                $jabatan_type_loop = "Bendahara pembantu pengeluaran";
+                $jabatan_type_loop = "Bendahara Pembantu Pengeluaran";
             } else {
                 $jabatan_type_loop = " - ";
             }

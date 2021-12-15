@@ -1,10 +1,4 @@
-<?php
-// header("Content-type: application/vnd-ms-excel");
-// header("Content-Disposition: attachment; filename=Data Pegawai.xls");
-// header("Program: no-cache");
-// header("Expires: 0");
 
-?>
 <div class="page-content-wrapper">
     <div class="container-fluid">
         <div class="row">
@@ -54,15 +48,18 @@
                     </div>
                     <div class="row">
                         <label for="example-text-input" class="col-sm-3 col-form-label">Pengguna Anggaran (PA)/Kuasa PA/PPTK</label>
-                        <label for="example-text-input" class="col-sm-2 col-form-label">: <?= implode("",$data['PPTK']);?></label>
+                        <!-- <label for="example-text-input" class="col-sm-2 col-form-label">: <?= implode("", $data['PPTK']); ?></label> -->
+                        <label for="example-text-input" class="col-sm-2 col-form-label">: <?= $data['PPTK']['nama_pegawai']; ?></label>
                     </div>
                     <div class="row">
                         <label for="example-text-input" class="col-sm-3 col-form-label">Bendahara (Penerimaan/Pengeluaran)</label>
-                        <label for="example-text-input" class="col-sm-2 col-form-label">: <?= implode("",$data['BPP']);?></label>
+                        <!-- <label for="example-text-input" class="col-sm-2 col-form-label">: <?= implode("", $data['BPP']); ?></label> -->
+                        <label for="example-text-input" class="col-sm-2 col-form-label">: <?= $data['BPP']['nama_pegawai']; ?></label>
                     </div>
                     <div class="row">
                         <label for="example-text-input" class="col-sm-3 col-form-label">Bendahara Pembantu</label>
-                        <label for="example-text-input" class="col-sm-2 col-form-label">: <?= implode("",$data['BP']);?></label>
+                        <!-- <label for="example-text-input" class="col-sm-2 col-form-label">: <?= implode("", $data['BP']); ?></label> -->
+                        <label for="example-text-input" class="col-sm-2 col-form-label">: <?= $data['BP']['nama_pegawai']; ?></label>
                     </div>
                     <div class="row">
                         <label for="example-text-input" class="col-sm-3 col-form-label">Kegiatan</label>
@@ -179,7 +176,7 @@
                 }
                 $('#row-data-laporan').show();
                 // document.getElementById("print_excel").href = "<?= BASEURL; ?>/laporan/printLaporanPajak/"+month+"/"+$('#id_kegiatan').val();
-                
+
             })
         })
 
@@ -202,6 +199,10 @@
                             $('.bulan_search').html(month);
                         }
                     } else {
+                        $('#id_kegiatan').val("")
+                        $('.bulan_search').html(month);
+                        $('.kegiatan_search').html(" - ");
+
                         $('#result-data').empty();
 
                         data_load += '<tr>'
@@ -300,18 +301,27 @@
             });
         }
 
-        function func_print_excel(){
+        function func_print_excel() {
             const month = $('#tanggal_kegiatan').val();
             const id = $('#id_kegiatan').val();
-            var loaction_url = "<?= BASEURL; ?>/laporan/printLaporanPajak/"+month+"/"+id
-            window.open(loaction_url)
+            if (id == "") {
+                alert("data Kosong ");
+            } else {
+                var loaction_url = "<?= BASEURL; ?>/laporan/printLaporanPajak/" + month + "/" + id
+                window.open(loaction_url)
+            }
         }
 
-        function func_print_pdf(){
+        function func_print_pdf() {
             const month = $('#tanggal_kegiatan').val();
             const id = $('#id_kegiatan').val();
-            var loaction_url = "<?= BASEURL; ?>/laporan/printLaporanPajakPDF/"+month+"/"+id
-            window.open(loaction_url)
+            if (id == "") {
+                alert("data Kosong ");
+            } else {
+                var loaction_url = "<?= BASEURL; ?>/laporan/printLaporanPajakPDF/" + month + "/" + id
+                window.open(loaction_url)
+            }
+
         }
 
         function numberWithCommas(x) {
