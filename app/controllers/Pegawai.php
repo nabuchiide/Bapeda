@@ -25,6 +25,17 @@ class Pegawai extends Controller
                 header('Location: ' . BASEURL . '/pegawai');
                 exit;
             }
+        } else if ($_POST['jabatan'] == "PTK") {
+
+            if ($this->model('PegawaiModel')->tambahData($_POST) > 0) {
+                Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'Pegawai');
+                header('Location: ' . BASEURL . '/pegawai');
+                exit;
+            } else {
+                Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Pegawai');
+                header('Location: ' . BASEURL . '/pegawai');
+                exit;
+            }
         } else {
             Flasher::setFlash('gagal', 'ditambahkan, jabatan sudah ada yang mengisi', 'danger', 'Pegawai');
             header('Location: ' . BASEURL . '/pegawai');
