@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Ke terangan</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Keterangan</label>
                                 <div class="col-sm-10">
                                     <textarea class="form-control" name="keterangan" id="keterangan" cols="30" rows="10"></textarea>
                                 </div>
@@ -70,7 +70,7 @@
                             <thead>
                                 <th>No</th>
                                 <th>Tanggal</th>
-                                <th>Nama Kegitana</th>
+                                <th>Nama Kegitan</th>
                                 <th>Lokasi</th>
                                 <th>Action</th>
                             </thead>
@@ -202,10 +202,7 @@
         function saveData() {
             var alert_error = message_alert('gagal', 'diubah atau ditambahkan, data yang di isi harus lengkap', 'danger', 'Kegiatan')
             console.log(alert_error);
-            if ($('#id_kegiatan').val() == "") {
-                $("#message").html(alert_error);
-                return
-            }
+           
             if ($('#nama_kegiatan').val() == "") {
                 $("#message").html(alert_error);
                 return
@@ -218,10 +215,7 @@
                 $("#message").html(alert_error);
                 return
             }
-            if ($('#keterangan').val() == "") {
-                $("#message").html(alert_error);
-                return
-            }
+           
 
             $('#formIputData').submit();
         }
