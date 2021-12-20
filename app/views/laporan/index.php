@@ -46,6 +46,9 @@
                         <label for="example-text-input" class="col-sm-3 col-form-label">OPD</label>
                         <label for="example-text-input" class="col-sm-2 col-form-label">: BAPEDDA KAB KARAWANG</label>
                     </div>
+                    <!-- <pre>
+                        <?php print_r($data);?>
+                    </pre> -->
                     <div class="row">
                         <label for="example-text-input" class="col-sm-3 col-form-label">Pengguna Anggaran (PA)/Kuasa PA/PPTK</label>
                         <!-- <label for="example-text-input" class="col-sm-2 col-form-label">: <?= implode("", $data['PPTK']); ?></label> -->
