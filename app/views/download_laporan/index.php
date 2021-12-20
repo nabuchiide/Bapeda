@@ -87,7 +87,8 @@ header("Expires: 0");
                                     $saldo = $saldo + $data_loop['pajak'];
                                 ?>
                                     <td> - </td>
-                                    <td><?= $data_loop['pajak']; ?></td>
+                                    <!-- <td><?= $data_loop['pajak']; ?></td> -->
+                                    <td> - </td>
                                 <?php } ?>
 
                             </tr>

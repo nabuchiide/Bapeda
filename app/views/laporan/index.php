@@ -258,7 +258,8 @@
                             } else if (element.status_pajak == '0') {
                                 saldo = parseInt(saldo) + parseInt(element.pajak)
                                 data_load += '    <td> - </td>'
-                                data_load += '    <td>' + numberWithCommas(saldo) + '</td>'
+                                // data_load += '    <td>' + numberWithCommas(saldo) + '</td>'
+                                data_load += '    <td> - </td>'
                             }
                             data_load += '</tr>'
                             no++;

@@ -21,7 +21,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Input Data User</h4>
-                    <form action="<?= BASEURL; ?>/user/tambah" method="post" class="form-enter">
+                    <form action="<?= BASEURL; ?>/user/tambah" method="post" class="form-enter" onsubmit="" id="formInsertData">
                         <!-- SELECT `id`, `user_name`, `password`, `user_type`, `no_pegawai` FROM `user` WHERE 1 -->
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label">User Name</label>
@@ -61,7 +61,7 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                             <div class="col-sm-5">
-                                <button class="btn btn-primary waves-effect waves-light" type="submit"> Save </button>
+                                <a href="#" class="btn btn-primary waves-effect waves-light" onclick="save_data();"> Save </a>
                                 <button class="btn btn-danger waves-effect waves-light" type="reset" onclick="reload_location('user')"> Reset </button>
                             </div>
                         </div>
@@ -203,4 +203,28 @@
                 $('#dataModal').modal('no_pegawai_hide');
             })
         })
+
+        function save_data() {
+            if ($('#user_name').val() == "") {
+                alert("data yang di isi harus lengkap");
+                return
+
+            }
+            if ($('#password').val() == "") {
+                alert("data yang di isi harus lengkap");
+                return
+
+            }
+            if ($('#user_type').val() == "") {
+                alert("data yang di isi harus lengkap");
+                return
+
+            }
+            if ($('#no_pegawai_hide').val() == "") {
+                alert("data yang di isi harus lengkap");
+                return
+            }
+
+            $('#formInsertData').submit();
+        }
     </script>

@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Input Data Pegawai</h4>
                     <!-- SELECT `id`, `nama_pegawai`, `alamat`, `no_pegawai`, `agama` FROM `pegawai` WHERE 1 -->
-                    <form action="<?= BASEURL; ?>/pegawai/tambah" method="post" class="form-enter">
+                    <form action="<?= BASEURL; ?>/pegawai/tambah" method="post" class="form-enter" id="formInputData">
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Nama</label>
                             <div class="col-sm-10">
@@ -63,7 +63,7 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                             <div class="col-sm-5">
-                                <button class="btn btn-primary waves-effect waves-light" type="submit"> Save </button>
+                                <a href="#" class="btn btn-primary waves-effect waves-light" onclick="saveData()"> Save </a>
                                 <button class="btn btn-danger waves-effect waves-light" type="reset" onclick="reload_location('pegawai')"> Reset </button>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                                     <td><?= $data['bidang']; ?></td>
                                     <td><?= $data['jabatan']; ?></td>
                                     <td>
-                                        <a href="<?= BASEURL; ?>/pegawai/hapus/<?= $data['id']; ?>/<?=$data['jabatan']?>" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Yakin?');">
+                                        <a href="<?= BASEURL; ?>/pegawai/hapus/<?= $data['id']; ?>/<?= $data['jabatan'] ?>" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Yakin?');">
                                             <span>
                                                 Hapus
                                             </span>
@@ -152,4 +152,25 @@
             });
         });
     });
+
+    function saveData() {
+        if ($('#nama_pegawai').val() == "") {
+            alert("data yang di isi harus lengkap");
+            return
+        }
+        if ($('#no_pegawai').val() == "") {
+            alert("data yang di isi harus lengkap");
+            return
+        }
+        if ($('#bidang').val() == "") {
+            alert("data yang di isi harus lengkap");
+            return
+        }
+        if ($('#jabatan').val() == "") {
+            alert("data yang di isi harus lengkap");
+            return
+        }
+
+        $('#formInputData').submit();
+    }
 </script>
