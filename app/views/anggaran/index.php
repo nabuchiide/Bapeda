@@ -86,7 +86,13 @@ $dataKegiatan       = $data['kegiatan'];
                     <hr>
                     <div class="post_msg" id="post_msg"></div>
                     <div class="row justify-content-end generate-status">
-                        <button class="btn btn-success" onclick="generate();">Generate Pajak</button>
+                        
+                        <?php 
+                            if($_SESSION['login']['type'] == 'BP' || $_SESSION['login']['type'] == 'MR'){
+                        ?>
+                                <button class="btn btn-success" onclick="generate();">Generate Pajak</button>
+                        <?php    }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -159,8 +165,11 @@ $dataKegiatan       = $data['kegiatan'];
             $("#tanggal_table_anggaran").html(tanggal);
 
             if (status != 0) {
-                $("#form-anggaran").empty();
-                $(".generate-status").empty();
+                $("#form-anggaran").hide();
+                $(".generate-status").hide();
+            }else{
+                $("#form-anggaran").show();
+                $(".generate-status").show();
             }
 
             $("#cardAnggaran").show();
