@@ -18,6 +18,8 @@
 
     <div class="container-fluid">
         <?php Flasher::flash(); ?>
+        <div id="message"></div>
+
         <div class="row container-fluid">
             <div class="col-lg-5">
                 <div class="card">
@@ -52,7 +54,7 @@
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                                 <div class="col-sm-5">
-                                    <button class="btn btn-primary waves-effect waves-light" type="submit"> Save </button>
+                                    <a href="#" class="btn btn-primary waves-effect waves-light" onclick="saveData()"> Save </a>
                                     <button class="btn btn-danger waves-effect waves-light" type="reset" onclick="reload_location('kegiatan')"> Reset </button>
                                 </div>
                             </div>
@@ -198,27 +200,41 @@
         })
 
         function saveData() {
+            var alert_error = message_alert('gagal', 'diubah atau ditambahkan, data yang di isi harus lengkap', 'danger', 'Kegiatan')
+            console.log(alert_error);
             if ($('#id_kegiatan').val() == "") {
-                alert("data yang di isi harus lengkap");
+                $("#message").html(alert_error);
                 return
             }
             if ($('#nama_kegiatan').val() == "") {
-                alert("data yang di isi harus lengkap");
+                $("#message").html(alert_error);
                 return
             }
             if ($('#lokasi').val() == "") {
-                alert("data yang di isi harus lengkap");
+                $("#message").html(alert_error);
                 return
             }
             if ($('#tanggal').val() == "") {
-                alert("data yang di isi harus lengkap");
+                $("#message").html(alert_error);
                 return
             }
             if ($('#keterangan').val() == "") {
-                alert("data yang di isi harus lengkap");
+                $("#message").html(alert_error);
                 return
             }
 
             $('#formIputData').submit();
         }
+
+        function message_alert(pesan, aksi, tipe, data) {
+            allert_load = "";
+            allert_load += '<div class="alert alert-' + tipe + ' alert-dismissible fade show" role="alert">'
+            allert_load += 'Data ' + data + ' <strong>' + pesan + ' </strong> ' + aksi
+            allert_load += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+            allert_load += '<span aria-hidden="true">&times;</span>'
+            allert_load += '</button>'
+            allert_load += '</div>'
+            return allert_load
+        }
+
     </script>

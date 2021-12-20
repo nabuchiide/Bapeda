@@ -16,6 +16,8 @@
         </div>
     </div>
     <?php Flasher::flash(); ?>
+    <div id="message"></div>
+
     <div class="row container-fluid">
         <div class="col-lg-5">
             <div class="card">
@@ -206,25 +208,37 @@
 
         function save_data() {
             if ($('#user_name').val() == "") {
-                alert("data yang di isi harus lengkap");
+                $("#message").html(message('gagal', 'diubah atau ditambahkan, data yang di isi harus lengkap', 'danger', 'User'));
                 return
 
             }
             if ($('#password').val() == "") {
-                alert("data yang di isi harus lengkap");
+                $("#message").html(message('gagal', 'diubah atau ditambahkan, data yang di isi harus lengkap', 'danger', 'User'));
+
                 return
 
             }
             if ($('#user_type').val() == "") {
-                alert("data yang di isi harus lengkap");
+                $("#message").html(message('gagal', 'diubah atau ditambahkan, data yang di isi harus lengkap', 'danger', 'User'));
                 return
 
             }
             if ($('#no_pegawai_hide').val() == "") {
-                alert("data yang di isi harus lengkap");
+                $("#message").html(message('gagal', 'diubah atau ditambahkan, data yang di isi harus lengkap', 'danger', 'User'));
                 return
             }
 
             $('#formInsertData').submit();
+        }
+
+        function message(pesan, aksi, tipe, data) {
+            allert_load = "";
+            allert_load += '<div class="alert alert-' + tipe + ' alert-dismissible fade show" role="alert">'
+            allert_load += 'Data ' + data + ' <strong>' + pesan + ' </strong> ' + aksi
+            allert_load += '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
+            allert_load += '<span aria-hidden="true">&times;</span>'
+            allert_load += '</button>'
+            allert_load += '</div>'
+            return allert_load
         }
     </script>
