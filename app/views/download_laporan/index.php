@@ -198,13 +198,13 @@ header("Expires: 0");
             <td></td>
             <td colspan="2">
                 <center>
-                    <?= $data['PPTK']['nama_pegawai']; ?>
+                    <?= $data['KPA']['nama_pegawai']; ?>
                 </center>
             </td>
             <td></td>
             <td colspan="2">
                 <center>
-                    <?= $data['BPP']['nama_pegawai']; ?>
+                    <?= $data['BP']['nama_pegawai']; ?>
                 </center>
             </td>
         </tr>
@@ -212,13 +212,13 @@ header("Expires: 0");
             <td></td>
             <td colspan="2">
                 <center>
-                    NIP. <?= $data['PPTK']['no_pegawai']; ?>
+                    NIP. <?= $data['KPA']['no_pegawai']; ?>
                 </center>
             </td>
             <td></td>
             <td colspan="2">
                 <center>
-                    NIP. <?= $data['BPP']['no_pegawai']; ?>
+                    NIP. <?= $data['BP']['no_pegawai']; ?>
                 </center>
             </td>
         </tr>

@@ -12,7 +12,7 @@
                     </div>
                     <div class="row">
                         <label for="example-text-input" class="col-sm-4 col-form-label">Pengguna Anggaran (PA)/Kuasa PA/PPTK</label>
-                        <label for="example-text-input" class="col-sm-6 col-form-label">: <?= $data['PPTK']['nama_pegawai']; ?></label>
+                        <label for="example-text-input" class="col-sm-6 col-form-label">: <?= $data['KPA']['nama_pegawai']; ?></label>
                     </div>
                     <div class="row">
                         <label for="example-text-input" class="col-sm-4 col-form-label">Bendahara (Penerimaan/Pengeluaran)</label>
@@ -106,8 +106,8 @@
                         <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> Bendahara Pembantu Pengeluaran,</label>
                     </div>
                     <div class="row">
-                        <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> <?= $data['PPTK']['nama_pegawai']; ?></label>
-                        <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> <?= $data['BPP']['nama_pegawai']; ?></label>
+                        <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> <?= $data['KPA']['nama_pegawai']; ?></label>
+                        <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> <?= $data['BP']['nama_pegawai']; ?></label>
                     </div>
                     <br>
                     <br>
@@ -115,8 +115,8 @@
                     <br>
                     <br>
                     <div class="row">
-                        <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> <?= $data['PPTK']['no_pegawai']; ?></label>
-                        <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> <?= $data['BPP']['no_pegawai']; ?></label>
+                        <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> <?= $data['KPA']['no_pegawai']; ?></label>
+                        <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> <?= $data['BP']['no_pegawai']; ?></label>
                     </div>
                 </div>
             </div>

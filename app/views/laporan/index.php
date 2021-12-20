@@ -52,7 +52,7 @@
                     <div class="row">
                         <label for="example-text-input" class="col-sm-3 col-form-label">Pengguna Anggaran (PA)/Kuasa PA/PPTK</label>
                         <!-- <label for="example-text-input" class="col-sm-2 col-form-label">: <?= implode("", $data['PPTK']); ?></label> -->
-                        <label for="example-text-input" class="col-sm-2 col-form-label">: <?= $data['PPTK']['nama_pegawai']; ?></label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">: <?= $data['KPA']['nama_pegawai']; ?></label>
                     </div>
                     <div class="row">
                         <label for="example-text-input" class="col-sm-3 col-form-label">Bendahara (Penerimaan/Pengeluaran)</label>
