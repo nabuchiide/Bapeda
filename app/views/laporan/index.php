@@ -57,12 +57,12 @@
                     <div class="row">
                         <label for="example-text-input" class="col-sm-3 col-form-label">Bendahara (Penerimaan/Pengeluaran)</label>
                         <!-- <label for="example-text-input" class="col-sm-2 col-form-label">: <?= implode("", $data['BPP']); ?></label> -->
-                        <label for="example-text-input" class="col-sm-2 col-form-label">: <?= $data['BPP']['nama_pegawai']; ?></label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">: <?= $data['BP']['nama_pegawai']; ?></label>
                     </div>
                     <div class="row">
                         <label for="example-text-input" class="col-sm-3 col-form-label">Bendahara Pembantu</label>
                         <!-- <label for="example-text-input" class="col-sm-2 col-form-label">: <?= implode("", $data['BP']); ?></label> -->
-                        <label for="example-text-input" class="col-sm-2 col-form-label">: <?= $data['BP']['nama_pegawai']; ?></label>
+                        <label for="example-text-input" class="col-sm-2 col-form-label">: <?= $data['BPP']['nama_pegawai']; ?></label>
                     </div>
                     <div class="row">
                         <label for="example-text-input" class="col-sm-3 col-form-label">Kegiatan</label>

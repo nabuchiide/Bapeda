@@ -30,11 +30,11 @@ header("Expires: 0");
                     </tr>
                     <tr>
                         <td>Bendahara (Penerimaan/Pengeluaran)</td>
-                        <td>: <?= $data['BPP']['nama_pegawai']; ?></td>
+                        <td>: <?= $data['BP']['nama_pegawai']; ?></td>
                     </tr>
                     <tr>
                         <td>Bendahara Pembantu</td>
-                        <td>: <?= $data['BP']['nama_pegawai']; ?></td>
+                        <td>: <?= $data['BPP']['nama_pegawai']; ?></td>
                     </tr>
                     <tr>
                         <td>Kegiatan</td>
@@ -204,7 +204,7 @@ header("Expires: 0");
             <td></td>
             <td colspan="2">
                 <center>
-                    <?= $data['BP']['nama_pegawai']; ?>
+                    <?= $data['BPP']['nama_pegawai']; ?>
                 </center>
             </td>
         </tr>
@@ -218,7 +218,7 @@ header("Expires: 0");
             <td></td>
             <td colspan="2">
                 <center>
-                    NIP. <?= $data['BP']['no_pegawai']; ?>
+                    NIP. <?= $data['BPP']['no_pegawai']; ?>
                 </center>
             </td>
         </tr>
