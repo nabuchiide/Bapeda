@@ -126,6 +126,8 @@
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-bullseye"></i> <span> Kegiatan </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="<?= BASEURL ?>/pajak">Pajak</a></li>
+                                    <li><a href="<?= BASEURL ?>/anggaran">Anggaran</a></li>
+
                                 </ul>
                             </li>
 
