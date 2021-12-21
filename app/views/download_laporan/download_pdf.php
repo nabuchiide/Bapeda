@@ -105,15 +105,15 @@
                         <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> Kuasa Pengguna Anggaran,</label>
                         <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> Bendahara Pembantu Pengeluaran,</label>
                     </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <div class="row">
                         <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> <?= $data['KPA']['nama_pegawai']; ?></label>
                         <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> <?= $data['BPP']['nama_pegawai']; ?></label>
                     </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
                     <div class="row">
                         <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> <?= $data['KPA']['no_pegawai']; ?></label>
                         <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> <?= $data['BPP']['no_pegawai']; ?></label>
