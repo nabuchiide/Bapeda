@@ -78,7 +78,7 @@ $dataKegiatan       = $data['kegiatan'];
                                 <td>
                                     <span class="btn-edit"><a href="#" class="btn btn-warning">Ubah</a></span>
                                     <span class="btn-save"><a href="#" class="btn btn-primary">Save</a></span>
-                                    <span class="btn-cancel"><a href="#" class="btn btn-link">Cancel</a></span>
+                                    <span class="btn-cancel"><a href="#" class="btn btn-danger">Cancel</a></span>
                                 </td>
                             </tr>
                         </tbody>
@@ -319,6 +319,7 @@ $dataKegiatan       = $data['kegiatan'];
                 $("#resultAnggaran").empty();
                 var data_load = "";
                 let no = 1;
+                // console.log(data.length)
                 if (data.length != 0) {
                     for (let i = 0; i < data.length; i++) {
                         const element = data[i];
@@ -336,7 +337,7 @@ $dataKegiatan       = $data['kegiatan'];
                             data_load += '        <span class="btn-edit"><a href="#" class="btn btn-warning">Ubah</a></span>'
                             data_load += '        <a href="#" class="btn btn-danger btn-delete" onclick="deleteData(' + element.id + ')">delete</a>'
                             data_load += '        <span class="btn-save"><a href="#" class="btn btn-primary">Save</a></span>'
-                            data_load += '        <span class="btn-cancel"><a href="#" class="btn btn-link">Cancel</a></span>'
+                            data_load += '        <span class="btn-cancel"><a href="#" class="btn btn-danger">Cancel</a></span>'
                         } else {
                             data_load += 'Pembayaran Pajak'
                         }

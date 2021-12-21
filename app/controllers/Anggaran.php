@@ -14,7 +14,7 @@ class Anggaran extends Controller
     
 
     public function getByKegitanAnggaran()
-    {
+    {   
         $allData = [];
         $allData = $this->model("AnggaranModel")->getDataByIdKegiatan($_POST['id']);
         echo json_encode($allData);
