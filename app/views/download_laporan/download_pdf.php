@@ -54,17 +54,17 @@
                                     <td><?= $no; ?></td>
                                     <td><?= $data_loop['tanggal']; ?></td>
                                     <td><?= $data_loop['keterangan']; ?></td>
-                                    <td><?= $data_loop['pajak']; ?></td>
+                                    <td><?= number_format($data_loop['pajak']); ?></td>
                                     <?php if (intval($data_loop['status_pajak']) == 1) {
                                         $total_setor = $total_setor + $data_loop['pajak'];
                                     ?>
-                                        <td><?= $data_loop['pajak']; ?></td>
+                                        <td><?= number_format($data_loop['pajak']); ?></td>
                                         <td> - </td>
                                     <?php } else if (intval($data_loop['status_pajak']) == 0) {
                                         $saldo = $saldo + $data_loop['pajak'];
                                     ?>
                                         <td> - </td>
-                                        <!-- <td><?= $data_loop['pajak']; ?></td> -->
+                                        <!-- <td><?= number_format($data_loop['pajak']); ?></td> -->
                                         <td> - </td>
                                     <?php } ?>
 
@@ -75,22 +75,22 @@
                         <tfoot>
                             <tr>
                                 <th colspan="3">Jumlah Bulan Ini</th>
-                                <th><?= $total_pajak; ?></th>
-                                <th><?= $total_setor; ?></th>
-                                <th><?= $saldo; ?></th>
+                                <th><?= number_format($total_pajak); ?></th>
+                                <th><?= number_format($total_setor); ?></th>
+                                <th><?= number_format($saldo); ?></th>
                             </tr>
                             <tr>
                                 <th colspan="3">Jumlah s/d Bulan Lalu</th>
-                                <th><?= $data['total_bulan_lalu']['pajak']; ?></th>
-                                <th><?= $data['total_bulan_lalu']['lunas']; ?></th>
-                                <th><?= $data['total_bulan_lalu']['nunggak']; ?></th>
+                                <th><?= number_format($data['total_bulan_lalu']['pajak']); ?></th>
+                                <th><?= number_format($data['total_bulan_lalu']['lunas']); ?></th>
+                                <th><?= number_format($data['total_bulan_lalu']['nunggak']); ?></th>
                             </tr>
 
                             <tr>
                                 <th colspan="3">Jumlah s/d Bulan Ini</th>
-                                <th><?= $data['total_bulan_lalu']['pajak'] + $data['total_bulan_lalu']['allpajak']; ?></th>
-                                <th><?= $data['total_bulan_lalu']['lunas'] + $data['total_bulan_lalu']['lunas_now']; ?></th>
-                                <th><?= $data['total_bulan_lalu']['nunggak'] + $data['total_bulan_lalu']['nunggak_now']; ?></th>
+                                <th><?= number_format($data['total_bulan_lalu']['pajak'] + $data['total_bulan_lalu']['allpajak']); ?></th>
+                                <th><?= number_format($data['total_bulan_lalu']['lunas'] + $data['total_bulan_lalu']['lunas_now']); ?></th>
+                                <th><?= number_format($data['total_bulan_lalu']['nunggak'] + $data['total_bulan_lalu']['nunggak_now']); ?></th>
                             </tr>
                         </tfoot>
                     </table>

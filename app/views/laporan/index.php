@@ -1,4 +1,3 @@
-
 <div class="page-content-wrapper">
     <div class="container-fluid">
         <div class="row">
@@ -24,9 +23,16 @@
                     <h4 class="mt-0 header-title"></h4>
                     <div class="form-group row">
                         <label for="example-text-input" class="col-sm-3 col-form-label">Tanggal </label>
-                        <div class="col-sm-7">
-                            <input class="form-control" type="month" id="tanggal_kegiatan">
+                        <div class="col-sm-4">
+                            <input class="form-control" type="month" id="tanggal_kegiatan" onchange="handler();">
                             <input class="form-control" type="hidden" id="id_kegiatan">
+                        </div>
+                        <div class="col-sm-3">
+                            <div id="SelectionData">
+                                <select name="kegiatan_selection" class="form-control" id="kegiatan_selection">
+                                    <option value="">Select Kegiatan</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-sm-2">
                             <button class="btn btn-primary waves-effect waves-light get-kegiatan-by-date" type="button"> search </button>
@@ -42,12 +48,13 @@
         <div class="col-lg">
             <div class="card">
                 <div class="card-body">
+                    <hr>
                     <div class="row">
                         <label for="example-text-input" class="col-sm-3 col-form-label">OPD</label>
                         <label for="example-text-input" class="col-sm-2 col-form-label">: BAPEDDA KAB KARAWANG</label>
                     </div>
                     <!-- <pre>
-                        <?php print_r($data);?>
+                        <?php print_r($data); ?>
                     </pre> -->
                     <div class="row">
                         <label for="example-text-input" class="col-sm-3 col-form-label">Pengguna Anggaran (PA)/Kuasa PA/PPTK</label>
@@ -67,6 +74,8 @@
                     <div class="row">
                         <label for="example-text-input" class="col-sm-3 col-form-label">Kegiatan</label>
                         <label for="example-text-input" class="col-sm-2 col-form-label">: <span class='kegiatan_search'></span></label>
+                        <!-- <label for="example-text-input" class="col-sm-2 col-form-label"></label> -->
+
                     </div>
                     <div class="row">
                         <label for="example-text-input" class="col-sm-3 col-form-label">Bulan</label>
@@ -149,7 +158,10 @@
     </div>
 
 </div>
-
+<br>
+<br>
+<br>
+<br>
 <div class="modal fade bd-example-modal-lg" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -169,21 +181,37 @@
 
     <script>
         $(document).ready(function() {
-            $(document).on('click', '.get-kegiatan-by-date', function(event) {
-                const month = $('#tanggal_kegiatan').val();
-                if (month == '') {
-                    alert('Tanggal harap di isi')
-                } else {
-                    getKegitanByDate(month)
-                    getUntilMonthOne(month)
-                }
-                $('#row-data-laporan').show();
-                // document.getElementById("print_excel").href = "<?= BASEURL; ?>/laporan/printLaporanPajak/"+month+"/"+$('#id_kegiatan').val();
 
-            })
+        })
+        $(document).on('click', '.get-kegiatan-by-date', function(event) {
+            const month = $('#tanggal_kegiatan').val();
+            const id = $("#kegiatan_selection").val();
+
+            if (id == "") {
+                alert("Data tidak tersedia ")
+            } else {
+                var kegiatan_select = document.getElementById("kegiatan_selection");
+                var kegiatan_select = kegiatan_select.options[kegiatan_select.selectedIndex].text;
+
+                $('#id_kegiatan').val(id)
+                $('.kegiatan_search').html(kegiatan_select)
+                $('.bulan_search').html(month);
+                getTotalPajak(id)
+                $('#row-data-laporan').show();
+            }
+        })
+
+        $(document).on('click', '#kegiatan_selection', function(event) {
+            const id = $("#kegiatan_selection").val();
+            $('#id_kegiatan').val(id)
+            $('.kegiatan_search').html()
+            $('.bulan_search').html(month);
+
         })
 
         function getKegitanByDate(month) {
+            var data_load = ''
+
             $.ajax({
                 url: '<?= BASEURL; ?>/laporan/getKegitanByDate',
                 data: {
@@ -193,34 +221,21 @@
                 dataType: 'json',
                 success: function(data) {
                     var data_load = ""
+                    console.log(data);
+                    $('#SelectionData').empty()
+                    data_load += '<select class="form-control" id="kegiatan_selection" name="kegiatan_selection">'
+                    data_load += '<option value="">Select Kegiatan</option>'
                     if (data.length != 0) {
                         for (let i = 0; i < data.length; i++) {
                             const element = data[i];
-                            getTotalPajak(element.id)
-                            $('#id_kegiatan').val(element.id)
-                            $('.kegiatan_search').html(element.nama_kegiatan)
-                            $('.bulan_search').html(month);
+                            // getTotalPajak(element.id)
+                            data_load += '    <option value="' + element.id + '">' + element.nama_kegiatan + '</option>'
                         }
+                        data_load += '</select>'
                     } else {
-                        $('#id_kegiatan').val("")
-                        $('.bulan_search').html(month);
-                        $('.kegiatan_search').html(" - ");
-
-                        $('#result-data').empty();
-
-                        data_load += '<tr>'
-                        data_load += '    <td> - </td>'
-                        data_load += '    <td> - </td>'
-                        data_load += '    <td> - </td>'
-                        data_load += '    <td> - </td>'
-                        data_load += '    <td> - </td>'
-                        data_load += '    <td> - </td>'
-                        data_load += '</tr>'
-                        $('#result-data').append(numberWithCommas(data_load));
-                        $('#total-pajak-bulan-ini').html(numberWithCommas(0))
-                        $('#total-setor-bulan-ini').html(numberWithCommas(0))
-                        $('#total-saldo-bulan-ini').html(numberWithCommas(0))
+                       
                     }
+                    $('#SelectionData').html(data_load)
                 },
                 error: function(data) {
                     console.log("ERROR");
@@ -272,7 +287,24 @@
                         $('#total-setor-bulan-ini').html(numberWithCommas(total_setor))
                         $('#total-saldo-bulan-ini').html(numberWithCommas(saldo))
                     } else {
-                        log("data kosong");
+                        $('#id_kegiatan').val("")
+                        $('.bulan_search').html(month);
+                        $('.kegiatan_search').html(" - ");
+
+                        $('#result-data').empty();
+
+                        data_load += '<tr>'
+                        data_load += '    <td> - </td>'
+                        data_load += '    <td> - </td>'
+                        data_load += '    <td> - </td>'
+                        data_load += '    <td> - </td>'
+                        data_load += '    <td> - </td>'
+                        data_load += '    <td> - </td>'
+                        data_load += '</tr>'
+                        $('#result-data').append(numberWithCommas(data_load));
+                        $('#total-pajak-bulan-ini').html(numberWithCommas(0))
+                        $('#total-setor-bulan-ini').html(numberWithCommas(0))
+                        $('#total-saldo-bulan-ini').html(numberWithCommas(0))
                     }
                 },
                 error: function(data) {
@@ -330,5 +362,15 @@
 
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        function handler() {
+            const month = $('#tanggal_kegiatan').val();
+            if (month == '') {
+                alert('Tanggal harap di isi')
+            } else {
+                getKegitanByDate(month)
+                getUntilMonthOne(month)
+            }
         }
     </script>
