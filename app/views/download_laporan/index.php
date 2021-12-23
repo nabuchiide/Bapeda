@@ -26,7 +26,7 @@ header("Expires: 0");
                     </tr>
                     <tr>
                         <td>Pengguna Anggaran (PA)/Kuasa PA/PPTK</td>
-                        <td>: <?= $data['PPTK']['nama_pegawai']; ?></td>
+                        <td>: <?= $data['KPA']['nama_pegawai']; ?></td>
                     </tr>
                     <tr>
                         <td>Bendahara (Penerimaan/Pengeluaran)</td>
