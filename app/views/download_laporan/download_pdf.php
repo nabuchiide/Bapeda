@@ -115,8 +115,8 @@
                         <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> <?= $data['BPP']['nama_pegawai']; ?></label>
                     </div>
                     <div class="row">
-                        <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> <?= $data['KPA']['no_pegawai']; ?></label>
-                        <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> <?= $data['BPP']['no_pegawai']; ?></label>
+                        <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around" style="text-decoration: underline;">NIP. <?= $data['KPA']['no_pegawai']; ?></label>
+                        <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around" style="text-decoration: underline;">NIP. <?= $data['BPP']['no_pegawai']; ?></label>
                     </div>
                 </div>
             </div>

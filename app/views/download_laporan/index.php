@@ -211,13 +211,13 @@ header("Expires: 0");
         <tr>
             <td></td>
             <td colspan="2">
-                <center>
+                <center style="text-decoration: underline;">
                     NIP. <?= $data['KPA']['no_pegawai']; ?>
                 </center>
             </td>
             <td></td>
             <td colspan="2">
-                <center>
+                <center style="text-decoration: underline;">
                     NIP. <?= $data['BPP']['no_pegawai']; ?>
                 </center>
             </td>
