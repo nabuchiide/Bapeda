@@ -1,6 +1,6 @@
 <?php
 header("Content-type: application/vnd-ms-excel");
-header("Content-Disposition: attachment; filename=Data Pegawai.xls");
+header("Content-Disposition: attachment; filename=Laporan.xls");
 header("Program: no-cache");
 header("Expires: 0");
 ?>
@@ -17,32 +17,37 @@ header("Expires: 0");
     <table>
         <tr>
             <td></td>
-            <td></td>
             <td>
                 <table>
                     <tr>
                         <td>OPD</td>
-                        <td>: BAPEDDA KAB KARAWANG</td>
+                        <td>:</td>
+                        <td>BAPEDDA KAB KARAWANG</td>
                     </tr>
                     <tr>
                         <td>Pengguna Anggaran (PA)/Kuasa PA/PPTK</td>
-                        <td>: <?= $data['KPA']['nama_pegawai']; ?></td>
+                        <td>:</td>
+                        <td><?= $data['KPA']['nama_pegawai']; ?></td>
                     </tr>
                     <tr>
                         <td>Bendahara (Penerimaan/Pengeluaran)</td>
-                        <td>: <?= $data['BP']['nama_pegawai']; ?></td>
+                        <td>:</td>
+                        <td><?= $data['BP']['nama_pegawai']; ?></td>
                     </tr>
                     <tr>
                         <td>Bendahara Pembantu</td>
-                        <td>: <?= $data['BPP']['nama_pegawai']; ?></td>
+                        <td>:</td>
+                        <td> <?= $data['BPP']['nama_pegawai']; ?></td>
                     </tr>
                     <tr>
                         <td>Kegiatan</td>
-                        <td>: <span class='kegiatan_search'><?= $data['kegiatan'][0]['nama_kegiatan'] ?></span></td>
+                        <td>:</td>
+                        <td width="100%"> <span class='kegiatan_search'><?= $data['kegiatan'][0]['nama_kegiatan'] ?></span></td>
                     </tr>
                     <tr>
                         <td>Bulan</td>
-                        <td>: <span class="bulan_search"><?= $data['month']; ?></span></td>
+                        <td>:</td>
+                        <td><span class="bulan_search"><?= $data['month']; ?></span></td>
                     </tr>
                 </table>
             </td>
@@ -98,22 +103,22 @@ header("Expires: 0");
                     <tfoot>
                         <tr>
                             <th colspan="3">Jumlah Bulan Ini</th>
-                            <th><?= $total_pajak; ?></th>
-                            <th><?= $total_setor; ?></th>
-                            <th><?= $saldo; ?></th>
+                            <td><?= $total_pajak; ?></td>
+                            <td><?= $total_setor; ?></td>
+                            <td><?= $saldo; ?></td>
                         </tr>
                         <tr>
                             <th colspan="3">Jumlah s/d Bulan Lalu</th>
-                            <th><?= $data['total_bulan_lalu']['pajak']; ?></th>
-                            <th><?= $data['total_bulan_lalu']['lunas']; ?></th>
-                            <th><?= $data['total_bulan_lalu']['nunggak']; ?></th>
+                            <td><?= $data['total_bulan_lalu']['pajak']; ?></td>
+                            <td><?= $data['total_bulan_lalu']['lunas']; ?></td>
+                            <td><?= $data['total_bulan_lalu']['nunggak']; ?></td>
                         </tr>
 
                         <tr>
                             <th colspan="3">Jumlah s/d Bulan Ini</th>
-                            <th><?= $data['total_bulan_lalu']['pajak'] + $data['total_bulan_lalu']['allpajak']; ?></th>
-                            <th><?= $data['total_bulan_lalu']['lunas'] + $data['total_bulan_lalu']['lunas_now']; ?></th>
-                            <th><?= $data['total_bulan_lalu']['nunggak'] + $data['total_bulan_lalu']['nunggak_now']; ?></th>
+                            <td><?= $data['total_bulan_lalu']['pajak'] + $data['total_bulan_lalu']['allpajak']; ?></td>
+                            <td><?= $data['total_bulan_lalu']['lunas'] + $data['total_bulan_lalu']['lunas_now']; ?></td>
+                            <td><?= $data['total_bulan_lalu']['nunggak'] + $data['total_bulan_lalu']['nunggak_now']; ?></td>
                         </tr>
                     </tfoot>
                 </table>
@@ -211,7 +216,7 @@ header("Expires: 0");
         <tr>
             <td></td>
             <td colspan="2">
-                <center">
+                <center>
                     NIP. <?= $data['KPA']['no_pegawai']; ?>
                 </center>
             </td>

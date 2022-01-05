@@ -73,7 +73,7 @@
                     </div>
                     <div class="row">
                         <label for="example-text-input" class="col-sm-3 col-form-label">Kegiatan</label>
-                        <label for="example-text-input" class="col-sm-2 col-form-label">: <span class='kegiatan_search'></span></label>
+                        <label for="example-text-input" class="col-sm-3 col-form-label">: <span class='kegiatan_search'></span></label>
                         <!-- <label for="example-text-input" class="col-sm-2 col-form-label"></label> -->
 
                     </div>
