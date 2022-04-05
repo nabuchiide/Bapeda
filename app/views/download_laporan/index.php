@@ -21,33 +21,27 @@ header("Expires: 0");
                 <table>
                     <tr>
                         <td>OPD</td>
-                        <td>:</td>
                         <td>BAPEDDA KAB KARAWANG</td>
                     </tr>
                     <tr>
                         <td>Pengguna Anggaran (PA)/Kuasa PA/PPTK</td>
-                        <td>:</td>
-                        <td><?= $data['KPA']['nama_pegawai']; ?></td>
+                        <td colspan="3">: <?= $data['KPA']['nama_pegawai']; ?></td>
                     </tr>
                     <tr>
                         <td>Bendahara (Penerimaan/Pengeluaran)</td>
-                        <td>:</td>
-                        <td><?= $data['BP']['nama_pegawai']; ?></td>
+                        <td colspan="3">: <?= $data['BP']['nama_pegawai']; ?></td>
                     </tr>
                     <tr>
                         <td>Bendahara Pembantu</td>
-                        <td>:</td>
-                        <td> <?= $data['BPP']['nama_pegawai']; ?></td>
+                        <td colspan="3">: <?= $data['BPP']['nama_pegawai']; ?></td>
                     </tr>
                     <tr>
                         <td>Kegiatan</td>
-                        <td>:</td>
-                        <td width="100%"> <span class='kegiatan_search'><?= $data['kegiatan'][0]['nama_kegiatan'] ?></span></td>
+                        <td width="100%" colspan="3">: <span class='kegiatan_search'><?= $data['kegiatan'][0]['nama_kegiatan'] ?></span></td>
                     </tr>
                     <tr>
                         <td>Bulan</td>
-                        <td>:</td>
-                        <td><span class="bulan_search"><?= $data['month']; ?></span></td>
+                        <td colspan="3">: <span class="bulan_search"><?= $data['month']; ?></span></td>
                     </tr>
                 </table>
             </td>
